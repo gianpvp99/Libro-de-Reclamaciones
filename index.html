@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Libro de Reclamaciones</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <style>
+
+        /* Estilos adicionales personalizados */
+        #loader {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.7);
+            z-index: 9999;
+            display: flex;
+            flex-direction: column; /* Cambiar la dirección a columna */
+            justify-content: center;
+            align-items: center;
+        }
+
+        #loading-text {
+            margin-top: 10px; /* Espacio entre el spinner y el texto */
+            font-size: 18px;
+            color: #333; /* Color del texto */
+            font-weight: bold;
+        }
+
+        .header {
+            background-color: red;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .container {
+            /* background-color: white; */
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 5px;
+            
+        }
+
+        .form-section1 {
+            background-color: transparent;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        .form-section1 h5 {
+            color: rgb(0, 0, 0);
+        }
+        .form-section1 h4 {
+            color: rgb(0, 0, 0);
+        }
+
+        .form-section2 {
+            background-color: #f0f0f0;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        .form-section2 h5 {
+            color: rgb(0, 0, 0);
+        }
+
+        .form-section3 {
+            background-color: #f0f0f0;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        .form-section3 h5 {
+            color: rgb(0, 0, 0);
+        }
+        .form-section3 h4 {
+            text-align: center;
+            color: rgb(0, 0, 0);
+        }
+
+
+
+        .custom-select {
+            border: 1px solid #ddd;
+            border-radius: 0;
+        }
+
+        .custom-select:focus {
+            border-color: #ddd;
+            box-shadow: none;
+        }
+
+        .input-group-prepend .custom-select {
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+
+        .input-group .form-control {
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+
+        .input-group .form-control:focus {
+            z-index: 1;
+            border-color: #ddd;
+            box-shadow: none;
+        }
+
+
+        .btnContinuarHome {
+            margin-top: 1rem; /* Usar rem para que sea proporcional al tamaño base del font */
+            padding: 0.9rem 2.5rem; /* Padding más simplificado */
+            border-radius: 1.55rem; /* Borde redondeado, también en rem */
+            font-size: 1.25rem; /* Tamaño de fuente más grande para mejor lectura en móviles */
+            background-color: red; /* Color de fondo */
+            border: none; /* Sin borde */
+            color: white; /* Texto blanco para mayor contraste */
+            transition: background-color 0.3s; /* Efecto de transición suave al cambiar de estado */
+        }
+
+        .btnContinuarHome:hover {
+            background-color: darkred; /* Color más oscuro al pasar el mouse para mejor feedback */
+        }
+
+        .form-page{
+            padding: 20px;
+            border-radius: 5px;
+        }
+        
+        .custom-checkbox {
+            display: none; /* Hide the default checkbox */
+        }
+
+        .custom-checkbox + .form-check-label {
+            position: relative;
+            padding-left: 30px;
+            cursor: pointer;
+        }
+
+        .custom-checkbox + .form-check-label::before {
+            content: "";
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid red; /* Red border */
+            position: absolute;
+            left: 0;
+            top: 0;
+            border-radius: 0;
+            background-color: white; /* White background */
+        }
+
+        .custom-checkbox:checked + .form-check-label::before {
+            background-color: red; /* Red background when checked */
+        }
+
+        .custom-checkbox:checked + .form-check-label::after {
+            content: "";
+            display: inline-block;
+            width: 6px;
+            height: 12px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            position: absolute;
+            left: 7px;
+            top: 3px;
+            transform: rotate(45deg);
+        }
+
+        .btn_atras{
+            background-color: red;
+            color: white;
+            border: none;
+            padding-right: 30px;
+            padding-left: 30px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+
+        .btn_atras img {
+            width: 1rem;
+            margin-right: 7px;
+            border-radius: 20px;
+        }
+        .btn_siguiente
+        {
+            background-color: red;
+            color: white;
+            border: none;
+            padding-right: 30px;
+            padding-left: 30px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+        .btn_siguiente img {
+            width: 1rem;
+            margin-left: 7px;
+            border-radius: 20px;
+        }
+
+        
+        .nav-link:hover {
+            color: black;
+        }
+
+        .nav-link {
+            color: gray;
+            font-weight: bold;
+
+            border-radius: 50px;
+            position: relative;
+            z-index: 1;
+            margin-right: 0;
+            padding: 10px 20px;
+            background-color: #F0F0F0;
+        }
+        .nav-pills .nav-link {
+            border-radius: 50px;
+            position: relative;
+            z-index: 1;
+            margin-right: 0;
+            padding: 10px 20px;
+            background-color: #F0F0F0;
+        }
+        .nav-pills .nav-link.active {
+            background-color: red;
+            color: white;
+            font-weight: bold;
+        }
+        .nav-pills .nav-link::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 100%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 2px;
+            background-color: red;
+            z-index: -1;
+        }
+        .nav-pills .nav-link:last-child::after {
+            content: none;
+        }
+        .nav-connector {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .nav-connector::after {
+            content: '';
+            width: 20px;
+            height: 2px;
+            background-color: #d9534f;
+            margin: 0 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="loader">
+        <div class="spinner-border text-danger" role="status">
+            <span class="sr-only"></span>
+        </div>
+        <div id="loading-text">Cargando información...</div>
+    </div>
+
+    <div class="container mt-5">
+        <div class="header">
+            <h1>Libro de Reclamaciones</h1>
+        </div>
+        <div class="row" id="home-page">
+            <div class="col-md-8">
+                <div class="form-section1">
+                    <h6>Toma en cuenta lo siguiente para registrar correctamente tu reclamo o queja:</h6>
+                </div>
+            </div>
+
+            <div class="col-md-8">
+                <div class="form-section2">
+                    <h5>¿Qué es un reclamo?</h5>
+                    <p>Insatisfacción en una operación, producto, servicio o por el incumplimiento de obligaciones contempladas en contratos marco normativo vigente o alguna presunta afectación a tu legítimo interés.</p>
+                    <h5>¿Qué es un una queja?</h5>
+                    <p>Insatisfacción en una operación, producto, servicio o por el incumplimiento de obligaciones contempladas en contratos marco normativo vigente o alguna presunta afectación a tu legítimo interés.</p>
+                    <h5>Plazo de atención</h5>
+                    <p>Quince (15) días hábiles. El Plazo podrá extenderse previa comunicación explicando las razones así como el nuevo plazo estimado de respuesta.</p>
+                    <h5>Documentos probatorios</h5>
+                    <p>Si necesitas añadir documentación del sustento de tu reclamo, deberás cargarlos en el apartado “Documentos adjuntos”.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-section3">
+                    <h4>Identifícate ingresando tu número de documento</h4><br>
+                    <p>Recuerda que si representas a una persona jurídica, debes ingresar con el RUC de la empresa.</p>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <select class="custom-select" id="tipoDoc" style="width: 140px; height:40px;">
+                                </select>
+                            </div>
+                            <input type="text" class="form-control"id="nroDoc" aria-label="Ingresar número de documento">
+                        </div>
+                    </div>
+                    <div style="text-align: center;">
+                        <button type="button" onclick="continuarProceso()" class="btn btnContinuarHome" id="btnContinuarHome" disabled>Continuar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row form-page" id="form-page">
+            <div class="col-md-12">
+                <ul class="nav nav-pills justify-content-center mb-4" id="pills-tab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="pills-datos-personales-tab" data-bs-toggle="" data-bs-target="" type="button" role="tab" aria-controls="pills-datos-personales" aria-selected="true">1. Datos Personales</button>
+                    </li>
+                    <div class="nav-connector"></div>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="pills-datos-contacto-tab" data-bs-toggle="" data-bs-target="" type="button" role="tab" aria-controls="pills-datos-contacto" aria-selected="false">2. Datos de Contacto</button>
+                    </li>
+                    <div class="nav-connector"></div>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="pills-identificacion-tab" data-bs-toggle="" data-bs-target="" type="button" role="tab" aria-controls="pills-identificacion" aria-selected="false">3. Identificación de la queja o reclamo</button>
+                    </li>
+                    <div class="nav-connector"></div>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="pills-resumen-tab" data-bs-toggle="" data-bs-target="" type="button" role="tab" aria-controls="pills-resumen" aria-selected="false">4. Resumen</button>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- <div class="card-body"> -->
+                
+                <div class="tab-content col-md-12" id="pills-tabContent">
+                    
+                    <div class="tab-pane fade show active" id="pills-datos-personales" role="tabpanel" aria-labelledby="pills-datos-personales-tab">
+                        
+                        <div class="col-md-8">
+                            <div class="mb-3">
+                                <label for="miCheckbox">¿Es menor de edad?</label>
+                                <div class="form-check">
+                                    <input class="form-check-input custom-checkbox" type="checkbox" id="checkboxSi">
+                                    <label class="form-check-label mr-3" for="checkboxSi">
+                                        Sí
+                                    </label>
+
+                                    <input class="form-check-input custom-checkbox" type="checkbox" id="checkboxNo">
+                                    <label class="form-check-label" for="checkboxNo">
+                                        No
+                                    </label>
+                                </div>
+                                   
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-8">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="mb-3">
+                                        <h5 class="text-danger">Del solicitante</h5>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="tipoDocSoli" class="form-label">Tipo de documento*</label>
+                                        <input type="text" class="form-control" id="tipoDocSoli" placeholder="" disabled>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="nroDocSoli" class="form-label">Número de documento*</label>
+                                        <input type="text" class="form-control" id="nroDocSoli" placeholder="" disabled>
+                                    </div>
+                                </div>
+                            
+
+                            
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="nombresSoli" class="form-label">Nombres*</label>
+                                        <input type="text" class="form-control" id="nombresSoli" placeholder="" disabled>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="primerApeSoli" class="form-label">Primer apellido*</label>
+                                        <input type="text" class="form-control" id="primerApeSoli" placeholder="" disabled>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="segundoApeSoli" class="form-label">Segundo apellido*</label>
+                                        <input type="text" class="form-control" id="segundoApeSoli" placeholder="" disabled>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" id="formApoderado">
+                                <div class="col-md-12">
+                                    <div class="mb-3">
+                                        <h5 class="text-danger">Del apoderado</h5>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="tipoDocApod" class="form-label">Tipo de documento*
+                                        </label>
+                                        <select class="form-select" id="tipoDocApod">
+                                        </select>
+                                        <!-- <select class="custom-select" id="tipoDocApod">
+                                        </select> -->
+                                        <!-- <label for="tipoDocApod" class="form-label">Tipo de documento</label>
+                                        <input type="text" class="form-control" id="tipoDocApod" placeholder="" > -->
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="nroDocApod" class="form-label">Número de documento*</label>
+                                        <input type="text" class="form-control" id="nroDocApod" placeholder="" >
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="parentescoApod" class="form-label">Parentesco*</label>
+                                        <input type="text" class="form-control" id="parentescoApod" placeholder="" >
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="nombresApod" class="form-label">Nombres*</label>
+                                        <input type="text" class="form-control" id="nombresApod" placeholder="" >
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="primerApeApod" class="form-label">Primer apellido*</label>
+                                        <input type="text" class="form-control" id="primerApeApod" placeholder="" >
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="segundoApeApod" class="form-label">Segundo apellido*</label>
+                                        <input type="text" class="form-control" id="segundoApeApod" placeholder="" >
+                                    </div>
+                                </div>
+                            
+                                <div class="col-md-12">
+                                    <div class="mb-4">
+                                        <h6>Validar los datos y luego dar click en botón "Continuemos".</h6>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        
+                        
+                    </div>
+                    <div class="tab-pane fade" id="pills-datos-contacto" role="tabpanel" aria-labelledby="pills-datos-contacto-tab">
+                        <!-- Contenido de Datos de Contacto -->
+                         <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="mb-3">
+                                        <label for="envioCorreoContacto" class="form-label">Medio elegido para envío de respuesta*
+                                        </label>
+                                        <select class="form-select" id="envioCorreoContacto" change>
+                                            <option value="" disabled selected>Seleccionar</option>
+                                            <option value="1" name="correo">Correo electrónico</option>
+                                            <option value="2" name="direccion">Dirección de domicilio</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="mb-3">
+                                        <label for="correoContacto" class="form-label">Email*</label>
+                                        <input type="email" class="form-control" id="correoContacto" placeholder="" >
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="mb-3">
+                                        <label for="telefonoContacto" class="form-label">Teléfono o Celular*</label>
+                                        <input type="text" class="form-control" id="telefonoContacto" placeholder="" >
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="mb-3">
+                                        <label for="departamento" class="form-label">Departamento*
+                                        </label>
+                                        <select class="form-select" id="departamento">
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="mb-3">
+                                        <label for="provincia" class="form-label">Provincia*</label>
+                                        <select class="form-select" id="provincia">
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="mb-3">
+                                        <label for="distrito" class="form-label">Distrito*</label>
+                                        <select class="form-select" id="distrito">
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="mb-3">
+                                        <label for="direccion" class="form-label">Dirección actual*</label>
+                                        <input type="text" class="form-control" id="direccion" placeholder="" >
+                                    </div>
+                                </div> 
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="mb-3">
+                                        <label for="referencia" class="form-label">Referencia*</label>
+                                        <input type="text" class="form-control" id="referencia" placeholder="" >
+                                    </div>
+                                </div> 
+                                <div class="col-md-12">
+                                    <div class="mb-4">
+                                        <h6>Validar los datos y luego dar click en botón "Continuemos".</h6>
+                                    </div>
+                                </div>
+                            </div>
+                         </div>
+                    </div>
+                    <div class="tab-pane fade" id="pills-identificacion" role="tabpanel" aria-labelledby="pills-identificacion-tab">
+                        <!-- Contenido de Identificación de la queja o reclamo -->
+                        <h3>Identificación de la queja o reclamo</h3>
+                        <p>Contenido de Identificación de la queja o reclamo...</p>
+                    </div>
+                    <div class="tab-pane fade" id="pills-resumen" role="tabpanel" aria-labelledby="pills-resumen-tab">
+                        <!-- Contenido de Resumen -->
+                        <h3>Resumen</h3>
+                        <p>Contenido de Resumen...</p>
+                    </div>
+                    <div class="row justify-content-between mt-3">
+                        <div class="col-auto">
+                            <button class="btn_atras" type="button" onclick="accionVolver()"><img src="https://i.imgur.com/yAL1JdK.png">Atrás</button>
+                        </div>
+                        <div class="col-auto">
+                            <button class="btn_siguiente" type="button" onclick="accionContinuar()">Siguiente<img src="https://i.imgur.com/NfgeFxw.png"></button>
+                        </div>
+                    </div>
+                </div>
+                
+            <!-- </div> -->
+            
+            
+        </div>
+
+    </div>
+
+    <script>
+        //RUTAS
+        const enviroment_url = "https://pisac.mafperu.com.pe/wa_experiencia_midleware/api";
+        // const enviroment_url = "https://mafperu.com.pe/wa_experiencia_crm_vs2/api";
+        //const enviroment_url = "https://localhost:44324/api";
+        const reclamo_url = "https://api-col-prod.crossnet.la/WebApiMafperu/api";
+        const CONTACTO = {
+            listar_tipo_documento: '/contacto/listartipodocumento',
+            cliente_documento: '/contacto/clienteDocumento',
+            cliente_documento2: '/contacto/clienteDocumento2',
+            listar_motivo: '/contacto/listarmotivo',
+            listar_submotivo: '/contacto/listarsubmotivo',
+            adjunto: '/contacto/adjunto',
+            registro_form: '/contacto/registroForm'
+        }
+        const RECLAMO = {
+            listar_departamento: '/reclamo/listardepartamento',
+            listar_provincia: '/reclamo/listarprovincia',
+            listar_distrito: '/reclamo/listardistrito'
+        }
+        
+    </script>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+     
+    <script>
+       
+        document.addEventListener("DOMContentLoaded", async function() {
+            document.getElementById('form-page').style.display = 'none';
+            try{
+                await cargarTiposDocumento();
+            }catch(error){
+                console.log(error);
+            }
+            document.getElementById('loader').style.display = 'none';
+        });
+        // document.getElementById('loader').style.display = '';
+        // document.getElementById('loader').style.display = 'none';
+
+        async function cargarTiposDocumento() {
+            try {
+                const response = await fetch(`${enviroment_url}${CONTACTO.listar_tipo_documento}`);
+                const data = await response.json();
+
+                const select = document.getElementById('tipoDoc');
+                const selectApoderado = document.getElementById('tipoDocApod');
+                const optionSelected = '<option selected disabled >Seleccionar</option>'; 
+                select.innerHTML = optionSelected;
+                selectApoderado.innerHTML = optionSelected;
+                data.forEach(doc => {
+                    if(doc.Codigo == 1 || doc.Codigo == 2 || doc.Codigo == 3 || doc.Codigo == 9){
+                        var option = new Option(doc.Nombre, doc.Codigo);
+                        var option2 = new Option(doc.Nombre, doc.Codigo);
+                        select.appendChild(option);
+                        selectApoderado.appendChild(option2);
+                    }
+                });
+            }catch(error){
+                console.error('Error cargando tipos de documento:', error);
+            }
+        }
+
+        var tipoDoc = document.getElementById('tipoDoc');
+        var nroDoc = document.getElementById('nroDoc');
+        var btnContinuar = document.getElementById('btnContinuarHome');
+
+        
+        // Agregar un event listener al checkbox
+        nroDoc.addEventListener('input', async function(){
+            if(nroDoc.value.trim() != '' && tipoDoc.value != ''){
+                btnContinuar.disabled = false;
+            }else {
+                btnContinuar.disabled = true;
+            }
+        });
+
+        async function showTabs(){
+            document.getElementById('home-page').style.display = 'none'; // Oculta la página inicial
+            document.getElementById('form-page').style.display = 'block'; // Muestra las pestañas del formulario
+        }
+
+        async function  continuarProceso(){
+            try{
+                document.getElementById('loader').style.display = '';
+                document.getElementById('checkboxNo').checked = true;
+
+                const tipoDoc = document.getElementById('tipoDoc');
+                const tipoDocSoli = document.getElementById('tipoDocSoli');
+                tipoDocSoli.value = tipoDoc.options[tipoDoc.selectedIndex].text;
+                await buscarCliente();
+                await showTabs();
+            }finally{
+                document.getElementById('loader').style.display = 'none';
+            }
+        }
+
+        const checkboxSi = document.getElementById('checkboxSi');
+        const checkboxNo = document.getElementById('checkboxNo');
+        const formApoderado = document.getElementById('formApoderado');
+        
+        formApoderado.style.display = 'none';
+        checkboxSi.addEventListener('change', async function() {
+            if(checkboxSi.checked){
+                formApoderado.style.display = '';
+                checkboxNo.checked = false;
+            }else {
+                formApoderado.style.display = 'none';
+                checkboxNo.checked = true;
+            }
+        });
+
+        checkboxNo.addEventListener('change', async function() {
+            if(checkboxNo.checked){
+                formApoderado.style.display = 'none';
+                checkboxSi.checked = false;
+            }else {
+                formApoderado.style.display = '';
+                checkboxSi.checked = true;
+            }
+        });
+
+        async function accionVolver(){
+
+            const datosPersonales = document.getElementById('pills-datos-personales-tab');
+            const datosContacto = document.getElementById('pills-datos-contacto-tab');
+            const identificacion = document.getElementById('pills-identificacion-tab');
+            const resumen = document.getElementById('pills-resumen-tab');
+
+            const contenidoPersonales = document.getElementById('pills-datos-personales')
+            const contenidoContacto = document.getElementById('pills-datos-contacto');
+            const contenidoIdentificacion = document.getElementById('pills-identificacion');
+            const contenidoResumen = document.getElementById('pills-resumen');
+
+            if(contenidoPersonales.classList.contains('active')){
+                window.location.reload();
+            }else if(contenidoContacto.classList.contains('active')){
+                datosContacto.classList.remove('active');
+                datosPersonales.classList.add('active');
+                contenidoContacto.classList.remove('show','active');
+                contenidoPersonales.classList.add('show','active');
+                
+            }else if(contenidoIdentificacion.classList.contains('active')){
+                identificacion.classList.remove('active');
+                datosContacto.classList.add('active');
+                contenidoIdentificacion.classList.remove('show','active');
+                contenidoContacto.classList.add('show','active');
+
+            }else if(contenidoResumen.classList.contains('active')){
+                resumen.classList.remove('active');
+                identificacion.classList.add('active');
+                contenidoResumen.classList.remove('show','active');
+                contenidoIdentificacion.classList.add('show','active');
+            }
+        }
+        
+        async function buscarCliente(){
+
+            try{
+                const documento = document.getElementById('nroDoc').value;
+                const response = await fetch(`${enviroment_url}${CONTACTO.cliente_documento}?nroDocumento=${documento}`);
+                const data = await response.json();
+                let nombreCompleto = '';
+                document.getElementById('nroDocSoli').value = documento;
+
+                if(data.Nro_documento == null){
+                    document.getElementById('nombresSoli').disabled = false;
+                    document.getElementById('nroDocSoli').disabled = false;
+                    document.getElementById('primerApeSoli').disabled = false;
+                    document.getElementById('segundoApeSoli').disabled = false;
+                }
+                
+                if (data.Tipo === 'Persona') {
+                    nombreCompleto = data.Primer_nombre + ' ' + (data.Segundo_nombre || '');
+                    document.getElementById('primerApeSoli').value = data.Apellido_paterno;
+                    document.getElementById('segundoApeSoli').value = data.Apellido_materno;
+                } else if (data.Tipo === 'Empresa') {
+                    nombreCompleto = data.Nombre_comercial || data.Nombre; // Ajusta según tus datos
+                    document.getElementById('primerApeSoli').value = '.';
+                    document.getElementById('segundoApeSoli').value = '.';
+                }
+
+                document.getElementById('nombresSoli').value = nombreCompleto;
+            }catch(error){
+                console.error('Error:', error);
+
+            }
+        }
+
+        async function accionContinuar(){
+            const datosPersonales = document.getElementById('pills-datos-personales-tab');
+            const datosContacto = document.getElementById('pills-datos-contacto-tab');
+            const identificacion = document.getElementById('pills-identificacion-tab');
+            const resumen = document.getElementById('pills-resumen-tab');
+
+            const contenidoPersonales = document.getElementById('pills-datos-personales')
+            const contenidoContacto = document.getElementById('pills-datos-contacto');
+            const contenidoIdentificacion = document.getElementById('pills-identificacion');
+            const contenidoResumen = document.getElementById('pills-resumen');
+
+            if(contenidoPersonales.classList.contains('active')){
+
+                var nroDocSoli = document.getElementById('nroDocSoli').value;
+                var nombresSoli = document.getElementById('nombresSoli').value;
+                var primerApeSoli = document.getElementById('primerApeSoli').value;
+                var segundoApeSoli = document.getElementById('segundoApeSoli').value;
+                
+                if(nroDocSoli.trim() == "" || nombresSoli.trim() == "" || primerApeSoli.trim() == "" || segundoApeSoli.trim() == ""){
+                    console.log('entro')
+                    return;
+                }
+
+                document.getElementById('loader').style.display = '';
+
+                datosPersonales.classList.remove('active');
+                datosContacto.classList.add('active');
+                contenidoPersonales.classList.remove('show','active');
+                contenidoContacto.classList.add('show','active');
+                await listarDepartamento();
+
+                document.getElementById('loader').style.display = 'none';
+
+            }else if(contenidoContacto.classList.contains('active')){
+
+
+                const envioCorreo = document.getElementById('envioCorreoContacto').value;
+                const correo = document.getElementById('correoContacto').value;
+                const telefono = document.getElementById('telefonoContacto').value;
+                const departamento = document.getElementById('departamento').value;
+                const provincia = document.getElementById('provincia').value;
+                const distrito = document.getElementById('distrito').value;
+                const direccion = document.getElementById('direccion').value;
+                const referencia = document.getElementById('referencia').value;
+
+                console.log(envioCorreo)
+                if(envioCorreo == "" || correo.trim() == "" || telefono.trim() == "" || departamento == "" || provincia == "" || distrito == "" || direccion.trim() == "" || referencia.trim() == ""){
+                    return;
+                }
+
+                document.getElementById('loader').style.display = '';
+                
+                datosContacto.classList.remove('active');
+                identificacion.classList.add('active');
+                contenidoContacto.classList.remove('show', 'active');
+                contenidoIdentificacion.classList.add('show', 'active');
+
+                document.getElementById('loader').style.display = 'none';
+
+            }else if(contenidoIdentificacion.classList.contains('active')){
+                document.getElementById('loader').style.display = '';
+
+                identificacion.classList.remove('active');
+                resumen.classList.add('active');
+                contenidoIdentificacion.classList.remove('show', 'active');
+                contenidoResumen.classList.add('show', 'active');
+
+                document.getElementById('loader').style.display = 'none';
+
+            }else if(contenidoResumen.classList.contains('active')){
+                document.getElementById('loader').style.display = '';
+
+
+                document.getElementById('loader').style.display = 'none';
+            }
+
+        }
+
+        async function listarDepartamento(){
+            try{
+                const documento = document.getElementById('nroDocSoli').value;
+                const response = await fetch(`${reclamo_url}${RECLAMO.listar_departamento}?nroDocumento=${documento}`);
+                const data = await response.json();
+
+                const departamento = document.getElementById('departamento');
+                const optionSelected = '<option value="" selected disabled >Seleccionar</option>'; 
+                departamento.innerHTML = optionSelected;
+                data.forEach(doc => {
+                    var option = new Option(doc.Nombre, doc.Codigo);
+                    departamento.appendChild(option);
+                });
+
+            }catch(error){
+                console.log(error);
+            }
+        }
+
+        const selectDepartamento = document.getElementById('departamento');
+        selectDepartamento.addEventListener('change', async (event) =>{
+            const departamento = event.target.value;
+            console.log(departamento);
+            document.getElementById('loader').style.display = '';
+            try{
+                const response = await fetch(`${reclamo_url}${RECLAMO.listar_provincia}?departamento=${departamento}`);
+                const data = await response.json();
+
+                const provincia = document.getElementById('provincia');
+                const optionSelected = '<option value="" selected disabled >Seleccionar</option>'; 
+                provincia.innerHTML = optionSelected;
+                data.forEach(doc => {
+                    var option = new Option(doc.Nombre, doc.Codigo);
+                    provincia.appendChild(option);
+                });
+            }catch(error){
+                console.log(error);
+            }
+            document.getElementById('loader').style.display = 'none';
+        });
+
+        const selectProvincia = document.getElementById('provincia');
+        selectProvincia.addEventListener('change', async (event) =>{
+            const provincia = event.target.value;
+            console.log(provincia);
+            document.getElementById('loader').style.display = '';
+            try{
+                const response = await fetch(`${reclamo_url}${RECLAMO.listar_distrito}?provincia=${provincia}`);
+                const data = await response.json();
+
+                const distrito = document.getElementById('distrito');
+                const optionSelected = '<option value="" selected disabled >Seleccionar</option>'; 
+                distrito.innerHTML = optionSelected;
+                data.forEach(doc => {
+                    var option = new Option(doc.Nombre, doc.Codigo);
+                    distrito.appendChild(option);
+                });
+            }catch(error){
+                console.log(error);
+            }
+            document.getElementById('loader').style.display = 'none';
+        });
+    </script>
+</body>
+</html>
