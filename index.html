@@ -262,6 +262,60 @@
             margin: 0 10px;
         }
 
+
+        .tipoCaso-checkbox {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: nowrap;
+            border: 2px solid #E0E0E0;
+            border-radius: 25px;
+            padding: 5px 15px;
+            background-color: white;
+            cursor: pointer;
+            user-select: none;
+            max-width: 200px; /* Tamaño máximo del contenedor */
+        }
+
+        .tipoCaso-checkbox input[type="checkbox"] {
+            display: none;
+        }
+
+        .tipoCaso-checkbox .checkbox-icon {
+            background-color: white;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            margin-left: 45px; /* Aumenta el margen para más espacio */
+            border: 2px solid #E0E0E0;
+            flex-shrink: 0;
+        }
+
+        .tipoCaso-checkbox input[type="checkbox"]:checked + .checkbox-icon {
+            background-color: red;
+            color: white;
+            border-color: red;
+        }
+
+        .tipoCaso-checkbox input[type="checkbox"]:checked + .checkbox-icon svg {
+            display: block;
+        }
+
+        .tipoCaso-checkbox input[type="checkbox"]:checked ~ .label-text {
+            color: red;
+        }
+
+        .tipoCaso-checkbox .checkbox-icon svg {
+            display: none;
+        }
+        .label-text {
+            flex-grow: 1;
+        }
+
     </style>
 </head>
 <body>
@@ -538,14 +592,197 @@
                          </div>
                     </div>
                     <div class="tab-pane fade" id="pills-identificacion" role="tabpanel" aria-labelledby="pills-identificacion-tab">
-                        <!-- Contenido de Identificación de la queja o reclamo -->
-                        <h3>Identificación de la queja o reclamo</h3>
-                        <p>Contenido de Identificación de la queja o reclamo...</p>
+                        <div class="col-md-12">
+                            <div class="row">
+                                
+                                <div class="col-md-4">
+                                    <label  class="form-label">Tipo de caso*</label>
+                                    <div style="display: flex; gap: 10px;">
+                                        <label class="tipoCaso-checkbox">
+                                            <span class="label-text">Reclamo</span>
+                                            <input type="checkbox" id="reclamo-checkbox">
+                                            <span class="checkbox-icon">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
+                                                    <path d="M13.485 1.929a.75.75 0 0 1 1.06 1.06l-8 8a.75.75 0 0 1-1.06 0l-4-4a.75.75 0 0 1 1.06-1.06L6 9.439l7.485-7.51z"/>
+                                                </svg>
+                                            </span>
+                                        </label>
+                                        <label class="tipoCaso-checkbox">
+                                            <span class="label-text">Queja</span>
+                                            <input type="checkbox" id="queja-checkbox">
+                                            <span class="checkbox-icon">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
+                                                    <path d="M13.485 1.929a.75.75 0 0 1 1.06 1.06l-8 8a.75.75 0 0 1-1.06 0l-4-4a.75.75 0 0 1 1.06-1.06L6 9.439l7.485-7.51z"/>
+                                                </svg>
+                                            </span>
+                                        </label>
+                                    </div>
+                                    
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="mb-3">
+                                        <label for="tipoProducto" class="form-label">Tipo de producto*</label>
+                                        <select class="form-select" id="tipoProducto">
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="motivo" class="form-label">Motivo*</label>
+                                        <select class="form-select" id="motivo">
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="subMotivo" class="form-label">Sub motivo*</label>
+                                        <select class="form-select" id="subMotivo">
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="mb-3">
+                                        <label for="detalleReclamo" class="form-label">Detalle del reclamo o queja*</label>
+                                        <textarea style="height: 15vh" class="form-control" name="detalleReclamo" id="detalleReclamo" placeholder="Datos obligatorios"> </textarea>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="mb-3">
+                                        <label for="pedidosReclamo" class="form-label">Pedidos del reclamante*</label>
+                                        <textarea style="height: 15vh" class="form-control" name="pedidosReclamo" id="pedidosReclamo" placeholder="Datos obligatorios"> </textarea>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <h5 style="color: red; font-weight: bold">Documentos Adjuntos</h5>
+                                        <p style="font-size: 0.8rem">
+                                            Puedes adjuntar vouchers, estados de cuenta, imágenes u otros documentos para sustentar tu caso.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="custom-file-container" style="position: relative;">
+                                        <input type="file" id="DocumentFiles" name="DocumentFiles" multiple="" style="opacity: 0; position: absolute; left: 0; top: 0; width: 100%; height: 100%; cursor: pointer;"/>
+                                        <button type="button" id="customButton" style="width: 100%; border: none; border-radius: 5px; font-size: 1rem; padding-bottom: 10px; padding-top: 10px;font-weight: normal; background-color: red; color: white; font-weight: bold;">Adjuntar documentos <img src="https://i.imgur.com/fYK08ph.png" style="width: 1rem; float: right; margin-right: 1rem; margin-top: 0.2rem; filter: invert(100%);"></button>
+                                    </div>
+
+                                    <p style="font-size: 0.7rem; margin-top: 10px; text-align: justify">*Máximo 10 archivos de 30 MB cada uno.</br>*Los formatos permitidos son PNG, JPEG, GIF, DOCX, XLS, XLSX, PDF.</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="tab-pane fade" id="pills-resumen" role="tabpanel" aria-labelledby="pills-resumen-tab">
-                        <!-- Contenido de Resumen -->
-                        <h3>Resumen</h3>
-                        <p>Contenido de Resumen...</p>
+                       <div class="row col-md-8 offset-md-3">
+                            <div class="mb-4 row">
+                                <label for="tipoDocR" class="col-sm-4 col-form-label">Tipo de documento*</label>
+                                <div class="col-sm-8">
+                                <input type="text" class="form-control" id="tipoDocR" disabled>
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="nroDocR" class="col-sm-4 col-form-label">Número de documento*</label>
+                                <div class="col-sm-8">
+                                <input type="text" class="form-control" id="nroDocR" disabled>
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="nomApeRazonSR" class="col-sm-4 col-form-label">Nombres y apellidos / Razón Social*</label>
+                                <div class="col-sm-8">
+                                <input type="text" class="form-control" id="nomApeRazonSR" disabled>
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="envioCorreoR" class="col-sm-4 col-form-label">Medio elegido para envío de respuesta*</label>
+                                <div class="col-sm-8">
+                                <input type="text" class="form-control" id="envioCorreoR" disabled>
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="correoR" class="col-sm-4 col-form-label">Email*</label>
+                                <div class="col-sm-8">
+                                <input type="text" class="form-control" id="correoR" disabled>
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="telfR" class="col-sm-4 col-form-label">Telefono o Celular*</label>
+                                <div class="col-sm-8">
+                                <input type="text" class="form-control" id="telfR" disabled>
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="departamentoR" class="col-sm-4 col-form-label">Departamento*</label>
+                                <div class="col-sm-8">
+                                <input type="text" class="form-control" id="departamentoR" disabled>
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="provinciaR" class="col-sm-4 col-form-label">Provincia*</label>
+                                <div class="col-sm-8">
+                                <input type="text" class="form-control" id="provinciaR" disabled>
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="distritoR" class="col-sm-4 col-form-label">Distrito*</label>
+                                <div class="col-sm-8">
+                                <input type="text" class="form-control" id="distritoR" disabled>
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="direccionR" class="col-sm-4 col-form-label">Dirección actual*</label>
+                                <div class="col-sm-8">
+                                <input type="text" class="form-control" id="direccionR" disabled>
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="referenciaR" class="col-sm-4 col-form-label">Referencia*</label>
+                                <div class="col-sm-8">
+                                <input type="text" class="form-control" id="referenciaR" disabled>
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="tipoCasoR" class="col-sm-4 col-form-label">Tipo de caso*</label>
+                                <div class="col-sm-8">
+                                <input type="text" class="form-control" id="tipoCasoR" disabled>
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="tipoProductoR" class="col-sm-4 col-form-label">Tipo de producto*</label>
+                                <div class="col-sm-8">
+                                <input type="text" class="form-control" id="tipoProductoR" disabled>
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="motivoR" class="col-sm-4 col-form-label">Motivo*</label>
+                                <div class="col-sm-8">
+                                <input type="text" class="form-control" id="motivoR" disabled>
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="subMotivoR" class="col-sm-4 col-form-label">Sub motivo*</label>
+                                <div class="col-sm-8">
+                                <input type="text" class="form-control" id="subMotivoR" disabled>
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="detalleReclamoR" class="col-sm-4 col-form-label">Detalle del reclamo o queja*</label>
+                                <div class="col-sm-8">
+                                    <textarea style="height: 15vh" class="form-control" name="detalleReclamoR" id="detalleReclamoR" placeholder="Datos obligatorios"> </textarea>
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="pedidosReclamoR" class="col-sm-4 col-form-label">Pedido del reclamante*</label>
+                                <div class="col-sm-8">
+                                    <textarea style="height: 15vh" class="form-control" name="pedidosReclamoR" id="pedidosReclamoR" placeholder="Datos obligatorios"> </textarea>
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="documentosAdjuntosR" class="col-sm-4 col-form-label">Documentos sustentarios*</label>
+                                <div class="col-sm-8">
+                                    <span id="documentosAdjuntosR" style="margin-left: 7px"></span>
+                                </div>
+                            </div>
+                       </div>
                     </div>
                     <div class="row justify-content-between mt-3">
                         <div class="col-auto">
@@ -610,7 +847,7 @@
 
                 const select = document.getElementById('tipoDoc');
                 const selectApoderado = document.getElementById('tipoDocApod');
-                const optionSelected = '<option selected disabled >Seleccionar</option>'; 
+                const optionSelected = '<option value="" selected disabled >Seleccionar</option>'; 
                 select.innerHTML = optionSelected;
                 selectApoderado.innerHTML = optionSelected;
                 data.forEach(doc => {
@@ -633,6 +870,14 @@
         
         // Agregar un event listener al checkbox
         nroDoc.addEventListener('input', async function(){
+            if(nroDoc.value.trim() != '' && tipoDoc.value != ''){
+                btnContinuar.disabled = false;
+            }else {
+                btnContinuar.disabled = true;
+            }
+        });
+
+        tipoDoc.addEventListener('change', async function(){
             if(nroDoc.value.trim() != '' && tipoDoc.value != ''){
                 btnContinuar.disabled = false;
             }else {
@@ -781,7 +1026,11 @@
                 datosContacto.classList.add('active');
                 contenidoPersonales.classList.remove('show','active');
                 contenidoContacto.classList.add('show','active');
-                await listarDepartamento();
+
+                const departamento = document.getElementById('departamento').value;
+                if(departamento.trim() == ''){
+                    await listarDepartamento();
+                }
 
                 document.getElementById('loader').style.display = 'none';
 
