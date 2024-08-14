@@ -316,6 +316,59 @@
             flex-grow: 1;
         }
 
+        #file-list {
+            list-style: none; /* Remueve los marcadores de lista */
+            padding: 0;
+            margin-top: 10px;
+        }
+
+        #file-list li {
+            background-color: #f1f1f1;
+            padding: 5px 10px; /* Añadido padding a la derecha e izquierda */
+            border: none;
+            margin-bottom: 5px;
+            position: relative;
+            display: flex; /* Asegura que los contenidos de li se alineen correctamente */
+            align-items: center; /* Centra los elementos verticalmente */
+            overflow: hidden;/* Oculta cualquier contenido que se desborde */
+            font-size: 0.7rem;
+        }
+
+        #file-list li::before {
+            content: '•'; /* Usamos un pseudo-elemento para el marcador */
+            color: red; /* Puedes cambiar el color del marcador */
+            margin-right: 10px; /* Espacio entre el marcador y el texto */
+            flex-shrink: 0; /* Previene que el marcador se escale */
+        }
+
+        #file-list li span {
+            flex-grow: 1; /* Permite que el texto ocupe todo el espacio disponible */
+            margin-right: 30px; /* Espacio para el botón de eliminar */
+            white-space: nowrap; /* Evita que el texto se envuelva */
+            overflow: hidden; /* Oculta el texto que se desborde */
+            text-overflow: ellipsis; /* Añade puntos suspensivos si el texto se desborda */
+        }
+
+        #file-list li button {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+
+        }
+        #file-list li button img {
+            height: 16px; /* or any size you want */
+            width: auto;
+        }
+
+        .container-banner {
+            background-color: grey;
+            padding: 20px;
+        }
+
     </style>
 </head>
 <body>
@@ -395,7 +448,29 @@
                     
                     <div class="tab-pane fade show active" id="pills-datos-personales" role="tabpanel" aria-labelledby="pills-datos-personales-tab">
                         
-                        <div class="col-md-8">
+                        <div class="col-md-8" id="tipoRuc">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="tipoDocRuc" class="form-label">Tipo de documento*</label>
+                                        <input type="text" class="form-control" id="tipoDocRuc" placeholder="" disabled>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="nroDocRuc" class="form-label">Número de documento*</label>
+                                        <input type="text" class="form-control" id="nroDocRuc" placeholder="" disabled>
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="mb-3">
+                                        <label for="razonSocialRuc" class="form-label">Razón social*</label>
+                                        <input type="text" class="form-control" id="razonSocialRuc" placeholder="" disabled>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-8" id="tipoEdad">
                             <div class="mb-3">
                                 <label for="miCheckbox">¿Es menor de edad?</label>
                                 <div class="form-check">
@@ -413,11 +488,11 @@
                             </div>
                         </div>
                         
-                        <div class="col-md-8">
-                            <div class="row">
+                        <div class="col-md-8" >
+                            <div class="row" id="tipoSoli" >
                                 <div class="col-md-12">
                                     <div class="mb-3">
-                                        <h5 class="text-danger">Del solicitante</h5>
+                                        <h5 class="text-danger" id="tipoContacto">Del solicitante</h5>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -457,7 +532,7 @@
                             <div class="row" id="formApoderado">
                                 <div class="col-md-12">
                                     <div class="mb-3">
-                                        <h5 class="text-danger">Del apoderado</h5>
+                                        <h5 class="text-danger" id="tipoApoderado">Del apoderado</h5>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -466,10 +541,6 @@
                                         </label>
                                         <select class="form-select" id="tipoDocApod">
                                         </select>
-                                        <!-- <select class="custom-select" id="tipoDocApod">
-                                        </select> -->
-                                        <!-- <label for="tipoDocApod" class="form-label">Tipo de documento</label>
-                                        <input type="text" class="form-control" id="tipoDocApod" placeholder="" > -->
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -572,14 +643,14 @@
                                 <div class="col-md-12">
                                     <div class="mb-3">
                                         <label for="direccion" class="form-label">Dirección actual*</label>
-                                        <input type="text" class="form-control" id="direccion" placeholder="" >
+                                        <input type="text" class="form-control" id="direccion" placeholder="Datos obligatorios" >
                                     </div>
                                 </div> 
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="mb-3">
-                                        <label for="referencia" class="form-label">Referencia*</label>
+                                        <label for="referencia" class="form-label">Referencia <span id="refValid">*</span></label>
                                         <input type="text" class="form-control" id="referencia" placeholder="" >
                                     </div>
                                 </div> 
@@ -623,6 +694,11 @@
                                     <div class="mb-3">
                                         <label for="tipoProducto" class="form-label">Tipo de producto*</label>
                                         <select class="form-select" id="tipoProducto">
+                                            <option selected="" disabled="" value="">Seleccionar</option>
+                                            <option value="460710000">Crédito vehicular</option>
+                                            <option value="460710001">Leasing</option>
+                                            <option value="460710002">Crédito de consumo</option>
+                                            <option value="460710003">Otros</option>
                                         </select>
                                     </div>
                                 </div>
@@ -669,12 +745,17 @@
 
                                     <p style="font-size: 0.7rem; margin-top: 10px; text-align: justify">*Máximo 10 archivos de 30 MB cada uno.</br>*Los formatos permitidos son PNG, JPEG, GIF, DOCX, XLS, XLSX, PDF.</p>
                                 </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <ul id="file-list"></ul>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="tab-pane fade" id="pills-resumen" role="tabpanel" aria-labelledby="pills-resumen-tab">
                        <div class="row col-md-8 offset-md-3">
-                            <div class="mb-4 row">
+                            <div class="mb-3 row">
                                 <label for="tipoDocR" class="col-sm-4 col-form-label">Tipo de documento*</label>
                                 <div class="col-sm-8">
                                 <input type="text" class="form-control" id="tipoDocR" disabled>
@@ -767,20 +848,25 @@
                             <div class="mb-3 row">
                                 <label for="detalleReclamoR" class="col-sm-4 col-form-label">Detalle del reclamo o queja*</label>
                                 <div class="col-sm-8">
-                                    <textarea style="height: 15vh" class="form-control" name="detalleReclamoR" id="detalleReclamoR" placeholder="Datos obligatorios"> </textarea>
+                                    <textarea style="height: 15vh" class="form-control" name="detalleReclamoR" id="detalleReclamoR" placeholder="Datos obligatorios" disabled> </textarea>
                                 </div>
                             </div>
                             <div class="mb-3 row">
                                 <label for="pedidosReclamoR" class="col-sm-4 col-form-label">Pedido del reclamante*</label>
                                 <div class="col-sm-8">
-                                    <textarea style="height: 15vh" class="form-control" name="pedidosReclamoR" id="pedidosReclamoR" placeholder="Datos obligatorios"> </textarea>
+                                    <textarea style="height: 15vh" class="form-control" name="pedidosReclamoR" id="pedidosReclamoR" placeholder="Datos obligatorios" disabled> </textarea>
                                 </div>
                             </div>
                             <div class="mb-3 row">
-                                <label for="documentosAdjuntosR" class="col-sm-4 col-form-label">Documentos sustentarios*</label>
+                                <label for="documentosAdjuntosR" class="col-sm-4 col-form-label">Documentos sustentarios</label>
                                 <div class="col-sm-8">
                                     <span id="documentosAdjuntosR" style="margin-left: 7px"></span>
                                 </div>
+                            </div>
+                       </div>
+                       <div class="row col-md-12">
+                            <div class="container-banner">
+
                             </div>
                        </div>
                     </div>
@@ -789,7 +875,7 @@
                             <button class="btn_atras" type="button" onclick="accionVolver()"><img src="https://i.imgur.com/yAL1JdK.png">Atrás</button>
                         </div>
                         <div class="col-auto">
-                            <button class="btn_siguiente" type="button" onclick="accionContinuar()">Siguiente<img src="https://i.imgur.com/NfgeFxw.png"></button>
+                            <button class="btn_siguiente" id="btnSiguiente" type="button" onclick="accionContinuar()">Siguiente<img src="https://i.imgur.com/NfgeFxw.png"></button>
                         </div>
                     </div>
                 </div>
@@ -819,7 +905,9 @@
         const RECLAMO = {
             listar_departamento: '/reclamo/listardepartamento',
             listar_provincia: '/reclamo/listarprovincia',
-            listar_distrito: '/reclamo/listardistrito'
+            listar_distrito: '/reclamo/listardistrito',
+            listar_motivo: '/reclamo/listarmotivo',
+            listar_submotivo: '/reclamo/listarsubmotivo',
         }
         
     </script>
@@ -897,7 +985,23 @@
 
                 const tipoDoc = document.getElementById('tipoDoc');
                 const tipoDocSoli = document.getElementById('tipoDocSoli');
-                tipoDocSoli.value = tipoDoc.options[tipoDoc.selectedIndex].text;
+                const tipoDocRuc = document.getElementById('tipoDocRuc');
+                const tipoRuc = document.getElementById('tipoRuc');
+                const tipoEdad = document.getElementById('tipoEdad');
+                const tipoSoli = document.getElementById('tipoSoli');
+                const formApoderado = document.getElementById('formApoderado');
+
+                if(tipoDoc.value == "9"){ // RUC
+                    const tipoApoderado = document.getElementById('tipoApoderado');
+                    tipoEdad.style.display = 'none';
+                    tipoSoli.style.display = 'none';
+                    tipoDocRuc.value = tipoDoc.options[tipoDoc.selectedIndex].text;
+                    tipoApoderado.innerHTML = 'Contacto';
+                }else {
+                    formApoderado.style.display = 'none';
+                    tipoRuc.style.display = 'none';
+                    tipoDocSoli.value = tipoDoc.options[tipoDoc.selectedIndex].text;
+                }
                 await buscarCliente();
                 await showTabs();
             }finally{
@@ -907,9 +1011,7 @@
 
         const checkboxSi = document.getElementById('checkboxSi');
         const checkboxNo = document.getElementById('checkboxNo');
-        const formApoderado = document.getElementById('formApoderado');
-        
-        formApoderado.style.display = 'none';
+
         checkboxSi.addEventListener('change', async function() {
             if(checkboxSi.checked){
                 formApoderado.style.display = '';
@@ -957,6 +1059,8 @@
                 contenidoContacto.classList.add('show','active');
 
             }else if(contenidoResumen.classList.contains('active')){
+                const btnSiguiente = document.getElementById('btnSiguiente');
+                btnSiguiente.innerHTML = 'Siguiente';
                 resumen.classList.remove('active');
                 identificacion.classList.add('active');
                 contenidoResumen.classList.remove('show','active');
@@ -971,26 +1075,38 @@
                 const response = await fetch(`${enviroment_url}${CONTACTO.cliente_documento}?nroDocumento=${documento}`);
                 const data = await response.json();
                 let nombreCompleto = '';
-                document.getElementById('nroDocSoli').value = documento;
 
-                if(data.Nro_documento == null){
-                    document.getElementById('nombresSoli').disabled = false;
-                    document.getElementById('nroDocSoli').disabled = false;
-                    document.getElementById('primerApeSoli').disabled = false;
-                    document.getElementById('segundoApeSoli').disabled = false;
+                if(tipoDoc.value == "9"){ // SOLO PARA RUC
+                    document.getElementById('nroDocRuc').value = documento;
+                    if(data.Nro_documento == null){
+                        document.getElementById('nroDocRuc').disabled = false;
+                        document.getElementById('razonSocialRuc').disabled = false;
+                    }
+                    document.getElementById('razonSocialRuc').value = data.Primer_nombre;
+                }else { // PROCESO NORMAL
+                    document.getElementById('nroDocSoli').value = documento;
+                    
+                    if(data.Nro_documento == null){
+                        document.getElementById('nombresSoli').disabled = false;
+                        document.getElementById('nroDocSoli').disabled = false;
+                        document.getElementById('primerApeSoli').disabled = false;
+                        document.getElementById('segundoApeSoli').disabled = false;
+                    }
+                    
+                    if (data.Tipo === 'Persona') {
+                        nombreCompleto = data.Primer_nombre + ' ' + (data.Segundo_nombre || '');
+                        document.getElementById('primerApeSoli').value = data.Apellido_paterno;
+                        document.getElementById('segundoApeSoli').value = data.Apellido_materno;
+                    } else if (data.Tipo === 'Empresa') {
+                        nombreCompleto = data.Nombre_comercial || data.Nombre; // Ajusta según tus datos
+                        document.getElementById('primerApeSoli').value = '.';
+                        document.getElementById('segundoApeSoli').value = '.';
+                    }
+
+                    document.getElementById('nombresSoli').value = nombreCompleto;
                 }
+
                 
-                if (data.Tipo === 'Persona') {
-                    nombreCompleto = data.Primer_nombre + ' ' + (data.Segundo_nombre || '');
-                    document.getElementById('primerApeSoli').value = data.Apellido_paterno;
-                    document.getElementById('segundoApeSoli').value = data.Apellido_materno;
-                } else if (data.Tipo === 'Empresa') {
-                    nombreCompleto = data.Nombre_comercial || data.Nombre; // Ajusta según tus datos
-                    document.getElementById('primerApeSoli').value = '.';
-                    document.getElementById('segundoApeSoli').value = '.';
-                }
-
-                document.getElementById('nombresSoli').value = nombreCompleto;
             }catch(error){
                 console.error('Error:', error);
 
@@ -1008,17 +1124,45 @@
             const contenidoIdentificacion = document.getElementById('pills-identificacion');
             const contenidoResumen = document.getElementById('pills-resumen');
 
+            var btnSiguiente = document.getElementById('btnSiguiente');
+
             if(contenidoPersonales.classList.contains('active')){
+
+                var nroDocRuc = document.getElementById('nroDocRuc').value;
+                var razonSocialRuc = document.getElementById('razonSocialRuc').value;
 
                 var nroDocSoli = document.getElementById('nroDocSoli').value;
                 var nombresSoli = document.getElementById('nombresSoli').value;
                 var primerApeSoli = document.getElementById('primerApeSoli').value;
                 var segundoApeSoli = document.getElementById('segundoApeSoli').value;
-                
-                if(nroDocSoli.trim() == "" || nombresSoli.trim() == "" || primerApeSoli.trim() == "" || segundoApeSoli.trim() == ""){
-                    console.log('entro')
-                    return;
+
+                var checkboxSi = document.getElementById('checkboxSi');
+                var tipoDocApod = document.getElementById('tipoDocApod').value;
+                var nroDocApod = document.getElementById('nroDocApod').value;
+                var parentescoApod = document.getElementById('parentescoApod').value;
+                var nombresApod = document.getElementById('nombresApod').value;
+                var primerApeApod = document.getElementById('primerApeApod').value;
+                var segundoApeApod = document.getElementById('segundoApeApod').value;
+
+                if(tipoDoc.value == "9"){ //RUC
+                    if(nroDocRuc.trim() == "" || razonSocialRuc.trim() == "" || tipoDocApod == "" || nroDocApod.trim() == "" || nombresApod.trim() == "" || primerApeApod.trim() == "" || segundoApeApod.trim() == ""){
+                        return;
+                    }
+                }else { // PROCESO NORMAL
+                    if(nroDocSoli.trim() == "" || nombresSoli.trim() == "" || primerApeSoli.trim() == "" || segundoApeSoli.trim() == ""){
+                        return;
+                    }
+
+                    
+
+                    if(checkboxSi.checked){
+                        if(tipoDocApod == "" || nroDocApod.trim() == "" || parentescoApod.trim() == "" || nombresApod.trim() == "" || primerApeApod.trim() == "" || segundoApeApod.trim() == ""){
+                            return;
+                        }
+                    }
                 }
+                
+                
 
                 document.getElementById('loader').style.display = '';
 
@@ -1045,9 +1189,8 @@
                 const distrito = document.getElementById('distrito').value;
                 const direccion = document.getElementById('direccion').value;
                 const referencia = document.getElementById('referencia').value;
-
-                console.log(envioCorreo)
-                if(envioCorreo == "" || correo.trim() == "" || telefono.trim() == "" || departamento == "" || provincia == "" || distrito == "" || direccion.trim() == "" || referencia.trim() == ""){
+                
+                if(envioCorreo == "" || correo.trim() == "" || telefono.trim() == "" || departamento == "" || provincia == "" || distrito == "" || direccion.trim() == "" || envioCorreo == 2 && referencia.trim() == ""){
                     return;
                 }
 
@@ -1058,9 +1201,25 @@
                 contenidoContacto.classList.remove('show', 'active');
                 contenidoIdentificacion.classList.add('show', 'active');
 
+                const motivo = document.getElementById('motivo').value;
+                if(motivo.trim() == ''){
+                    await listarMotivo();
+                }
+
                 document.getElementById('loader').style.display = 'none';
 
             }else if(contenidoIdentificacion.classList.contains('active')){
+
+                const reclamoCheck = document.getElementById('reclamo-checkbox').checked;
+                const quejaCheck = document.getElementById('queja-checkbox').checked;
+                const motivo = document.getElementById('motivo').value;
+                const subMotivo = document.getElementById('subMotivo').value;
+                const detalleReclamo = document.getElementById('detalleReclamo').value;
+                const pedidosReclamo = document.getElementById('pedidosReclamo').value;
+
+                if(!reclamoCheck && !quejaCheck || motivo == "" || subMotivo == "" || detalleReclamo.trim() == "" || pedidosReclamo.trim() == ""){
+                    return;
+                }
                 document.getElementById('loader').style.display = '';
 
                 identificacion.classList.remove('active');
@@ -1068,6 +1227,10 @@
                 contenidoIdentificacion.classList.remove('show', 'active');
                 contenidoResumen.classList.add('show', 'active');
 
+                btnSiguiente.innerHTML = "Enviar";
+
+
+               
                 document.getElementById('loader').style.display = 'none';
 
             }else if(contenidoResumen.classList.contains('active')){
@@ -1101,7 +1264,6 @@
         const selectDepartamento = document.getElementById('departamento');
         selectDepartamento.addEventListener('change', async (event) =>{
             const departamento = event.target.value;
-            console.log(departamento);
             document.getElementById('loader').style.display = '';
             try{
                 const response = await fetch(`${reclamo_url}${RECLAMO.listar_provincia}?departamento=${departamento}`);
@@ -1123,7 +1285,6 @@
         const selectProvincia = document.getElementById('provincia');
         selectProvincia.addEventListener('change', async (event) =>{
             const provincia = event.target.value;
-            console.log(provincia);
             document.getElementById('loader').style.display = '';
             try{
                 const response = await fetch(`${reclamo_url}${RECLAMO.listar_distrito}?provincia=${provincia}`);
@@ -1141,6 +1302,104 @@
             }
             document.getElementById('loader').style.display = 'none';
         });
+
+        const selectedEnvioCorreo = document.getElementById('envioCorreoContacto');
+        selectedEnvioCorreo.addEventListener('change', async (event) =>{
+            const envioCorreo = event.target.value;
+            const referencia = document.getElementById('referencia');
+            const refValid = document.getElementById('refValid');
+
+            if(envioCorreo == 1){
+                referencia.placeholder = "Opcional";
+                refValid.style.display = "none";
+            }else {
+                referencia.placeholder = "Datos obligatorios";
+                refValid.style.display = "";
+            }
+        });
+
+
+        async function listarMotivo() {
+            try{
+                const response = await fetch(`${reclamo_url}${RECLAMO.listar_motivo}`);
+                const data = await response.json();
+
+                const motivo = document.getElementById('motivo');
+                const optionSelected = '<option value="" selected disabled >Seleccionar</option>'; 
+                motivo.innerHTML = optionSelected;
+                data.forEach(doc => {
+                    var option = new Option(doc.Nombre, doc.Codigo);
+                    motivo.appendChild(option);
+                });
+            }catch(error){
+                console.log(error);
+            }
+        }
+
+        const selectMotivo = document.getElementById('motivo');
+        selectMotivo.addEventListener('change', async (event) =>{
+            const motivo = event.target.value;
+            document.getElementById('loader').style.display = '';
+            try{
+                const response = await fetch(`${reclamo_url}${RECLAMO.listar_submotivo}?id=${motivo}`);
+                const data = await response.json();
+
+                const subMotivo = document.getElementById('subMotivo');
+                const optionSelected = '<option value="" selected disabled >Seleccionar</option>'; 
+                subMotivo.innerHTML = optionSelected;
+                data.forEach(doc => {
+                    var option = new Option(doc.Nombre, doc.Codigo);
+                    subMotivo.appendChild(option);
+                });
+            }catch(error){
+                console.log(error);
+            }
+            document.getElementById('loader').style.display = 'none';
+        });
+
+
+        let accumulatedFiles = [];  // Almacena todos los archivos acumulados
+        document.getElementById('DocumentFiles').addEventListener('change', function() {
+            // Agrega nuevos archivos a la lista acumulada
+            accumulatedFiles = accumulatedFiles.concat(Array.from(this.files));
+
+            updateFileList();
+        });
+
+        function updateFileList() {
+            var fileList = document.getElementById('file-list');
+            fileList.innerHTML = '';  // Limpiar la lista para actualizar la visualización
+
+            accumulatedFiles.forEach((file, index) => {
+                let li = document.createElement('li');
+                li.textContent = file.name + ' ';
+
+                let removeButton = document.createElement('button');
+                let img = document.createElement('img');
+                img.src = 'https://i.imgur.com/PHUCp8i.png';  // URL de la imagen del botón para eliminar
+                img.alt = 'Eliminar';
+                removeButton.appendChild(img);
+
+                removeButton.addEventListener('click', function() {
+                    // Eliminar el archivo de la lista acumulada
+                    accumulatedFiles = accumulatedFiles.filter((_, i) => i !== index);
+                    updateFileList();  // Actualizar la lista visualmente y en el input
+                });
+
+                li.appendChild(removeButton);
+                fileList.appendChild(li);
+            });
+
+            // Actualizar el input file con los archivos acumulados
+            const dataTransfer = new DataTransfer();
+            accumulatedFiles.forEach(file => dataTransfer.items.add(file));
+            document.getElementById('DocumentFiles').files = dataTransfer.files;
+
+            // Actualizar el contador de archivos
+            document.getElementById('documentosAdjuntosR').textContent = accumulatedFiles.length + ' archivo(s)';
+        }
+
+
     </script>
 </body>
 </html>
