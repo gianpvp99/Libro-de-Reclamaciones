@@ -550,7 +550,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-md-6">
+                                <div class="col-md-6" id="parentescoHab">
                                     <div class="mb-3">
                                         <label for="parentescoApod" class="form-label">Parentesco*</label>
                                         <input type="text" class="form-control" id="parentescoApod" placeholder="" >
@@ -990,12 +990,14 @@
                 const tipoEdad = document.getElementById('tipoEdad');
                 const tipoSoli = document.getElementById('tipoSoli');
                 const formApoderado = document.getElementById('formApoderado');
+                const parentescoHab = document.getElementById('parentescoHab');
 
                 if(tipoDoc.value == "9"){ // RUC
                     const tipoApoderado = document.getElementById('tipoApoderado');
                     tipoEdad.style.display = 'none';
                     tipoSoli.style.display = 'none';
                     tipoDocRuc.value = tipoDoc.options[tipoDoc.selectedIndex].text;
+                    parentescoHab.style.display = 'none';
                     tipoApoderado.innerHTML = 'Contacto';
                 }else {
                     formApoderado.style.display = 'none';
@@ -1011,6 +1013,7 @@
 
         const checkboxSi = document.getElementById('checkboxSi');
         const checkboxNo = document.getElementById('checkboxNo');
+        const formApoderado = document.getElementById('formApoderado');
 
         checkboxSi.addEventListener('change', async function() {
             if(checkboxSi.checked){
@@ -1126,34 +1129,59 @@
 
             var btnSiguiente = document.getElementById('btnSiguiente');
 
+            //INI- VARIABLES DE DATOS PERSONALES
+            
+            var tipoDocSoli = document.getElementById('tipoDocSoli').value;
+            var tipoDocRuc = document.getElementById('tipoDocRuc').value;
+            var nroDocRuc = document.getElementById('nroDocRuc').value;
+            var razonSocialRuc = document.getElementById('razonSocialRuc').value;
+
+            var nroDocSoli = document.getElementById('nroDocSoli').value;
+            var nombresSoli = document.getElementById('nombresSoli').value;
+            var primerApeSoli = document.getElementById('primerApeSoli').value;
+            var segundoApeSoli = document.getElementById('segundoApeSoli').value;
+
+            var checkboxSi = document.getElementById('checkboxSi');
+            var tipoDocApod = document.getElementById('tipoDocApod').value;
+            var nroDocApod = document.getElementById('nroDocApod').value;
+            var parentescoApod = document.getElementById('parentescoApod').value;
+            var nombresApod = document.getElementById('nombresApod').value;
+            var primerApeApod = document.getElementById('primerApeApod').value;
+            var segundoApeApod = document.getElementById('segundoApeApod').value;
+            var departamento = document.getElementById('departamento').value;
+            // FIN - VARIABLES DE DAT...
+
+            // INI - VARIABLES DE DATOS CONTACTO
+            var envioCorreo = document.getElementById('envioCorreoContacto').value;
+            var correo = document.getElementById('correoContacto').value;
+            var telefono = document.getElementById('telefonoContacto').value;
+            var departamento = document.getElementById('departamento').value;
+            var provincia = document.getElementById('provincia').value;
+            var distrito = document.getElementById('distrito').value;
+            var direccion = document.getElementById('direccion').value;
+            var referencia = document.getElementById('referencia').value;
+            var motivo = document.getElementById('motivo').value;
+            // FIN - VARIABLES DE DAT...
+
+            // INI - VARIABLES DE IDENTIFICACION DE LA QUEJA O RECLAMO
+            var reclamoCheck = document.getElementById('reclamo-checkbox').checked;
+            var quejaCheck = document.getElementById('queja-checkbox').checked;
+            var motivo = document.getElementById('motivo').value;
+            var subMotivo = document.getElementById('subMotivo').value;
+            var detalleReclamo = document.getElementById('detalleReclamo').value;
+            var pedidosReclamo = document.getElementById('pedidosReclamo').value;
+            // FIN - VARIABLES DE IDENTI...
+
             if(contenidoPersonales.classList.contains('active')){
 
-                var nroDocRuc = document.getElementById('nroDocRuc').value;
-                var razonSocialRuc = document.getElementById('razonSocialRuc').value;
-
-                var nroDocSoli = document.getElementById('nroDocSoli').value;
-                var nombresSoli = document.getElementById('nombresSoli').value;
-                var primerApeSoli = document.getElementById('primerApeSoli').value;
-                var segundoApeSoli = document.getElementById('segundoApeSoli').value;
-
-                var checkboxSi = document.getElementById('checkboxSi');
-                var tipoDocApod = document.getElementById('tipoDocApod').value;
-                var nroDocApod = document.getElementById('nroDocApod').value;
-                var parentescoApod = document.getElementById('parentescoApod').value;
-                var nombresApod = document.getElementById('nombresApod').value;
-                var primerApeApod = document.getElementById('primerApeApod').value;
-                var segundoApeApod = document.getElementById('segundoApeApod').value;
-
                 if(tipoDoc.value == "9"){ //RUC
-                    if(nroDocRuc.trim() == "" || razonSocialRuc.trim() == "" || tipoDocApod == "" || nroDocApod.trim() == "" || nombresApod.trim() == "" || primerApeApod.trim() == "" || segundoApeApod.trim() == ""){
+                    if(tipoDocRuc.trim() == "" || nroDocRuc.trim() == "" || razonSocialRuc.trim() == "" || tipoDocApod == "" || nroDocApod.trim() == "" || nombresApod.trim() == "" || primerApeApod.trim() == "" || segundoApeApod.trim() == ""){
                         return;
                     }
                 }else { // PROCESO NORMAL
                     if(nroDocSoli.trim() == "" || nombresSoli.trim() == "" || primerApeSoli.trim() == "" || segundoApeSoli.trim() == ""){
                         return;
                     }
-
-                    
 
                     if(checkboxSi.checked){
                         if(tipoDocApod == "" || nroDocApod.trim() == "" || parentescoApod.trim() == "" || nombresApod.trim() == "" || primerApeApod.trim() == "" || segundoApeApod.trim() == ""){
@@ -1162,8 +1190,6 @@
                     }
                 }
                 
-                
-
                 document.getElementById('loader').style.display = '';
 
                 datosPersonales.classList.remove('active');
@@ -1171,7 +1197,6 @@
                 contenidoPersonales.classList.remove('show','active');
                 contenidoContacto.classList.add('show','active');
 
-                const departamento = document.getElementById('departamento').value;
                 if(departamento.trim() == ''){
                     await listarDepartamento();
                 }
@@ -1180,16 +1205,6 @@
 
             }else if(contenidoContacto.classList.contains('active')){
 
-
-                const envioCorreo = document.getElementById('envioCorreoContacto').value;
-                const correo = document.getElementById('correoContacto').value;
-                const telefono = document.getElementById('telefonoContacto').value;
-                const departamento = document.getElementById('departamento').value;
-                const provincia = document.getElementById('provincia').value;
-                const distrito = document.getElementById('distrito').value;
-                const direccion = document.getElementById('direccion').value;
-                const referencia = document.getElementById('referencia').value;
-                
                 if(envioCorreo == "" || correo.trim() == "" || telefono.trim() == "" || departamento == "" || provincia == "" || distrito == "" || direccion.trim() == "" || envioCorreo == 2 && referencia.trim() == ""){
                     return;
                 }
@@ -1201,7 +1216,6 @@
                 contenidoContacto.classList.remove('show', 'active');
                 contenidoIdentificacion.classList.add('show', 'active');
 
-                const motivo = document.getElementById('motivo').value;
                 if(motivo.trim() == ''){
                     await listarMotivo();
                 }
@@ -1210,12 +1224,7 @@
 
             }else if(contenidoIdentificacion.classList.contains('active')){
 
-                const reclamoCheck = document.getElementById('reclamo-checkbox').checked;
-                const quejaCheck = document.getElementById('queja-checkbox').checked;
-                const motivo = document.getElementById('motivo').value;
-                const subMotivo = document.getElementById('subMotivo').value;
-                const detalleReclamo = document.getElementById('detalleReclamo').value;
-                const pedidosReclamo = document.getElementById('pedidosReclamo').value;
+                
 
                 if(!reclamoCheck && !quejaCheck || motivo == "" || subMotivo == "" || detalleReclamo.trim() == "" || pedidosReclamo.trim() == ""){
                     return;
@@ -1227,10 +1236,14 @@
                 contenidoIdentificacion.classList.remove('show', 'active');
                 contenidoResumen.classList.add('show', 'active');
 
+                if(tipoDoc.value == "9"){ // RUC
+                    // CONTINUAR LOGICA 
+                }else { // PROCESO NORMAL
+
+                }
+
                 btnSiguiente.innerHTML = "Enviar";
 
-
-               
                 document.getElementById('loader').style.display = 'none';
 
             }else if(contenidoResumen.classList.contains('active')){
@@ -1315,6 +1328,25 @@
             }else {
                 referencia.placeholder = "Datos obligatorios";
                 refValid.style.display = "";
+            }
+        });
+
+        const reclamoCheckbox = document.getElementById('reclamo-checkbox');
+        const quejaCheckbox = document.getElementById('queja-checkbox');
+
+        reclamoCheckbox.addEventListener('change', async function() {
+            if(reclamoCheckbox.checked){
+                quejaCheckbox.checked = false;
+            }else {
+                quejaCheckbox.checked = true;
+            }
+        });
+
+        quejaCheckbox.addEventListener('change', async function() {
+            if(quejaCheckbox.checked){
+                reclamoCheckbox.checked = false;
+            }else {
+                reclamoCheckbox.checked = true;
             }
         });
 
