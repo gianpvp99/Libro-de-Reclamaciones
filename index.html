@@ -444,28 +444,36 @@
 
             <!-- <div class="card-body"> -->
                 
-                <div class="tab-content col-md-12" id="pills-tabContent">
+                <div class="needs-validation was-validated tab-content col-md-12" id="pills-tabContent" novalidate>
+                    <div class="tab-pane fade show active" id="pills-datos-personales" role="tabpanel" aria-labelledby="pills-datos-personales-tab" >
                     
-                    <div class="tab-pane fade show active" id="pills-datos-personales" role="tabpanel" aria-labelledby="pills-datos-personales-tab">
-                        
                         <div class="col-md-8" id="tipoRuc">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="tipoDocRuc" class="form-label">Tipo de documento*</label>
-                                        <input type="text" class="form-control" id="tipoDocRuc" placeholder="" disabled>
+                                        <input type="text" class="form-control" id="tipoDocRuc" placeholder="" disabled required>
+                                        <div class="invalid-feedback">
+                                            El tipo de documento es obligatorio.
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="nroDocRuc" class="form-label">Número de documento*</label>
-                                        <input type="text" class="form-control" id="nroDocRuc" placeholder="" disabled>
+                                        <input type="text" class="form-control" id="nroDocRuc" placeholder="" disabled required>
+                                        <div class="invalid-feedback">
+                                            El número de documento es obligatorio.
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-md-8">
                                     <div class="mb-3">
                                         <label for="razonSocialRuc" class="form-label">Razón social*</label>
-                                        <input type="text" class="form-control" id="razonSocialRuc" placeholder="" disabled>
+                                        <input type="text" class="form-control" id="razonSocialRuc" placeholder="" disabled required>
+                                        <div class="invalid-feedback">
+                                            La razón social es obligatorio.
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -484,7 +492,7 @@
                                         No
                                     </label>
                                 </div>
-                                   
+                                    
                             </div>
                         </div>
                         
@@ -498,13 +506,19 @@
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="tipoDocSoli" class="form-label">Tipo de documento*</label>
-                                        <input type="text" class="form-control" id="tipoDocSoli" placeholder="" disabled>
+                                        <input type="text" class="form-control" id="tipoDocSoli" placeholder="" disabled required>
+                                        <div class="invalid-feedback">
+                                            El tipo de documento es obligatorio.
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="nroDocSoli" class="form-label">Número de documento*</label>
-                                        <input type="text" class="form-control" id="nroDocSoli" placeholder="" disabled>
+                                        <input type="text" class="form-control" id="nroDocSoli" placeholder="" disabled required>
+                                        <div class="invalid-feedback">
+                                            El número de documento es obligatorio.
+                                        </div>
                                     </div>
                                 </div>
                             
@@ -513,19 +527,28 @@
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="nombresSoli" class="form-label">Nombres*</label>
-                                        <input type="text" class="form-control" id="nombresSoli" placeholder="" disabled>
+                                        <input type="text" class="form-control" id="nombresSoli" placeholder="" disabled required>
+                                        <div class="invalid-feedback">
+                                            Los nombres son obligatorios.
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="primerApeSoli" class="form-label">Primer apellido*</label>
-                                        <input type="text" class="form-control" id="primerApeSoli" placeholder="" disabled>
+                                        <input type="text" class="form-control" id="primerApeSoli" placeholder="" disabled required>
+                                        <div class="invalid-feedback">
+                                            El primer apellido es obligatorio.
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="segundoApeSoli" class="form-label">Segundo apellido*</label>
-                                        <input type="text" class="form-control" id="segundoApeSoli" placeholder="" disabled>
+                                        <input type="text" class="form-control" id="segundoApeSoli" placeholder="" disabled required>
+                                        <div class="invalid-feedback">
+                                            El segundo apellido es obligatorio.
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -539,39 +562,55 @@
                                     <div class="mb-3">
                                         <label for="tipoDocApod" class="form-label">Tipo de documento*
                                         </label>
-                                        <select class="form-select" id="tipoDocApod">
+                                        <select class="form-select" id="tipoDocApod" required>
                                         </select>
+                                        <div class="invalid-feedback">El tipo de documento es obligatoria.</div>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="nroDocApod" class="form-label">Número de documento*</label>
-                                        <input type="text" class="form-control" id="nroDocApod" placeholder="" >
+                                        <input type="text" class="form-control" id="nroDocApod" placeholder="" required>
+                                        <div class="invalid-feedback">
+                                            El número de documento es obligatorio.
+                                        </div>
                                     </div>
                                 </div>
 
                                 <div class="col-md-6" id="parentescoHab">
                                     <div class="mb-3">
                                         <label for="parentescoApod" class="form-label">Parentesco*</label>
-                                        <input type="text" class="form-control" id="parentescoApod" placeholder="" >
+                                        <input type="text" class="form-control" id="parentescoApod" placeholder="" required>
+                                        <div class="invalid-feedback">
+                                            El parentesco es obligatorio.
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="nombresApod" class="form-label">Nombres*</label>
-                                        <input type="text" class="form-control" id="nombresApod" placeholder="" >
+                                        <input type="text" class="form-control" id="nombresApod" placeholder="" required>
+                                        <div class="invalid-feedback">
+                                            Los nombres son obligatorios.
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="primerApeApod" class="form-label">Primer apellido*</label>
-                                        <input type="text" class="form-control" id="primerApeApod" placeholder="" >
+                                        <input type="text" class="form-control" id="primerApeApod" placeholder="" required>
+                                        <div class="invalid-feedback">
+                                            El primer apellido es obligatorio.
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="segundoApeApod" class="form-label">Segundo apellido*</label>
-                                        <input type="text" class="form-control" id="segundoApeApod" placeholder="" >
+                                        <input type="text" class="form-control" id="segundoApeApod" placeholder="" required>
+                                        <div class="invalid-feedback">
+                                            El segundo apellido es obligatorio.
+                                        </div>
                                     </div>
                                 </div>
                             
@@ -583,8 +622,6 @@
                             </div>
                             
                         </div>
-                        
-                        
                     </div>
                     <div class="tab-pane fade" id="pills-datos-contacto" role="tabpanel" aria-labelledby="pills-datos-contacto-tab">
                         <!-- Contenido de Datos de Contacto -->
@@ -594,23 +631,26 @@
                                     <div class="mb-3">
                                         <label for="envioCorreoContacto" class="form-label">Medio elegido para envío de respuesta*
                                         </label>
-                                        <select class="form-select" id="envioCorreoContacto" change>
+                                        <select class="form-select" id="envioCorreoContacto" change required>
                                             <option value="" disabled selected>Seleccionar</option>
                                             <option value="1" name="correo">Correo electrónico</option>
                                             <option value="2" name="direccion">Dirección de domicilio</option>
                                         </select>
+                                        <div class="invalid-feedback">El medio de envío es obligatorio.</div>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="mb-3">
                                         <label for="correoContacto" class="form-label">Email*</label>
-                                        <input type="email" class="form-control" id="correoContacto" placeholder="" >
+                                        <input type="email" class="form-control" id="correoContacto" placeholder="" required>
+                                        <div class="invalid-feedback">El email es obligatorio.</div>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="mb-3">
                                         <label for="telefonoContacto" class="form-label">Teléfono o Celular*</label>
-                                        <input type="text" class="form-control" id="telefonoContacto" placeholder="" >
+                                        <input type="text" class="form-control" id="telefonoContacto" placeholder="" required>
+                                        <div class="invalid-feedback">El teléfono o celular es obligatorio.</div>
                                     </div>
                                 </div>
                             </div>
@@ -620,22 +660,25 @@
                                     <div class="mb-3">
                                         <label for="departamento" class="form-label">Departamento*
                                         </label>
-                                        <select class="form-select" id="departamento">
+                                        <select class="form-select" id="departamento" required>
                                         </select>
+                                        <div class="invalid-feedback">El departamento es obligatorio.</div>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="mb-3">
                                         <label for="provincia" class="form-label">Provincia*</label>
-                                        <select class="form-select" id="provincia">
+                                        <select class="form-select" id="provincia" required>
                                         </select>
+                                        <div class="invalid-feedback">La provincia es obligatoria.</div>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="mb-3">
                                         <label for="distrito" class="form-label">Distrito*</label>
-                                        <select class="form-select" id="distrito">
+                                        <select class="form-select" id="distrito" required>
                                         </select>
+                                        <div class="invalid-feedback">El distrito es obligatorio.</div>
                                     </div>
                                 </div>
                             </div>
@@ -643,7 +686,8 @@
                                 <div class="col-md-12">
                                     <div class="mb-3">
                                         <label for="direccion" class="form-label">Dirección actual*</label>
-                                        <input type="text" class="form-control" id="direccion" placeholder="Datos obligatorios" >
+                                        <input type="text" class="form-control" id="direccion" placeholder="Datos obligatorios" required>
+                                        <div class="invalid-feedback">La dirección actual es obligatoria.</div>
                                     </div>
                                 </div> 
                             </div>
@@ -651,7 +695,8 @@
                                 <div class="col-md-12">
                                     <div class="mb-3">
                                         <label for="referencia" class="form-label">Referencia <span id="refValid">*</span></label>
-                                        <input type="text" class="form-control" id="referencia" placeholder="" >
+                                        <input type="text" class="form-control" id="referencia" placeholder="" required>
+                                        <div class="invalid-feedback">La referencia es obligatoria.</div>
                                     </div>
                                 </div> 
                                 <div class="col-md-12">
@@ -693,39 +738,44 @@
                                 <div class="col-md-8">
                                     <div class="mb-3">
                                         <label for="tipoProducto" class="form-label">Tipo de producto*</label>
-                                        <select class="form-select" id="tipoProducto">
+                                        <select class="form-select" id="tipoProducto" required>
                                             <option selected="" disabled="" value="">Seleccionar</option>
                                             <option value="460710000">Crédito vehicular</option>
                                             <option value="460710001">Leasing</option>
                                             <option value="460710002">Crédito de consumo</option>
                                             <option value="460710003">Otros</option>
                                         </select>
+                                        <div class="invalid-feedback">El tipo de producto es obligatorio.</div>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="motivo" class="form-label">Motivo*</label>
-                                        <select class="form-select" id="motivo">
+                                        <select class="form-select" id="motivo" required>
                                         </select>
+                                        <div class="invalid-feedback">El motivo es obligatorio.</div>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="subMotivo" class="form-label">Sub motivo*</label>
-                                        <select class="form-select" id="subMotivo">
+                                        <select class="form-select" id="subMotivo" required>
                                         </select>
+                                        <div class="invalid-feedback">El sub motivo es obligatorio.</div>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="mb-3">
                                         <label for="detalleReclamo" class="form-label">Detalle del reclamo o queja*</label>
-                                        <textarea style="height: 15vh" class="form-control" name="detalleReclamo" id="detalleReclamo" placeholder="Datos obligatorios"> </textarea>
+                                        <textarea style="height: 15vh" class="form-control" name="detalleReclamo" id="detalleReclamo" placeholder="Datos obligatorios" required></textarea>
+                                        <div class="invalid-feedback">El detalle de reclamo o queja es obligatorio.</div>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="mb-3">
                                         <label for="pedidosReclamo" class="form-label">Pedidos del reclamante*</label>
-                                        <textarea style="height: 15vh" class="form-control" name="pedidosReclamo" id="pedidosReclamo" placeholder="Datos obligatorios"> </textarea>
+                                        <textarea style="height: 15vh" class="form-control" name="pedidosReclamo" id="pedidosReclamo" placeholder="Datos obligatorios" required></textarea>
+                                        <div class="invalid-feedback">Los pedidos del reclamante son obligatorios.</div>
                                     </div>
                                 </div>
 
@@ -773,6 +823,32 @@
                                 <input type="text" class="form-control" id="nomApeRazonSR" disabled>
                                 </div>
                             </div>
+                            
+                            <div class="mb-3 row" id="tipoDoc2HabR">
+                                <label for="tipoDoc2R" class="col-sm-4 col-form-label">Tipo de documento*</label>
+                                <div class="col-sm-8">
+                                <input type="text" class="form-control" id="tipoDoc2R" disabled>
+                                </div>
+                            </div>
+                            <div class="mb-3 row" id="nroDoc2HabR">
+                                <label for="nroDoc2R" class="col-sm-4 col-form-label">Número de documento*</label>
+                                <div class="col-sm-8">
+                                <input type="text" class="form-control" id="nroDoc2R" disabled>
+                                </div>
+                            </div>
+                            <div class="mb-3 row" id="parentescoHabR">
+                                <label for="parentescoR" class="col-sm-4 col-form-label">Parentesco*</label>
+                                <div class="col-sm-8">
+                                <input type="text" class="form-control" id="parentescoR" disabled>
+                                </div>
+                            </div>
+                            <div class="mb-3 row" id="nomApeRazonS2HabR">
+                                <label for="nomApeRazonS2R" class="col-sm-4 col-form-label">Nombres y apellidos / Razón Social*</label>
+                                <div class="col-sm-8">
+                                <input type="text" class="form-control" id="nomApeRazonS2R" disabled>
+                                </div>
+                            </div>
+                            
                             <div class="mb-3 row">
                                 <label for="envioCorreoR" class="col-sm-4 col-form-label">Medio elegido para envío de respuesta*</label>
                                 <div class="col-sm-8">
@@ -1131,60 +1207,91 @@
 
             //INI- VARIABLES DE DATOS PERSONALES
             
-            var tipoDocSoli = document.getElementById('tipoDocSoli').value;
-            var tipoDocRuc = document.getElementById('tipoDocRuc').value;
-            var nroDocRuc = document.getElementById('nroDocRuc').value;
-            var razonSocialRuc = document.getElementById('razonSocialRuc').value;
+            var tipoDocSoli = document.getElementById('tipoDocSoli');
+            var tipoDocRuc = document.getElementById('tipoDocRuc');
+            var nroDocRuc = document.getElementById('nroDocRuc');
+            var razonSocialRuc = document.getElementById('razonSocialRuc');
 
-            var nroDocSoli = document.getElementById('nroDocSoli').value;
-            var nombresSoli = document.getElementById('nombresSoli').value;
-            var primerApeSoli = document.getElementById('primerApeSoli').value;
-            var segundoApeSoli = document.getElementById('segundoApeSoli').value;
+            var nroDocSoli = document.getElementById('nroDocSoli');
+            var nombresSoli = document.getElementById('nombresSoli');
+            var primerApeSoli = document.getElementById('primerApeSoli');
+            var segundoApeSoli = document.getElementById('segundoApeSoli');
 
             var checkboxSi = document.getElementById('checkboxSi');
-            var tipoDocApod = document.getElementById('tipoDocApod').value;
-            var nroDocApod = document.getElementById('nroDocApod').value;
-            var parentescoApod = document.getElementById('parentescoApod').value;
-            var nombresApod = document.getElementById('nombresApod').value;
-            var primerApeApod = document.getElementById('primerApeApod').value;
-            var segundoApeApod = document.getElementById('segundoApeApod').value;
-            var departamento = document.getElementById('departamento').value;
+            var checkboxNo = document.getElementById('checkboxNo');
+            var tipoDocApod = document.getElementById('tipoDocApod');
+            var nroDocApod = document.getElementById('nroDocApod');
+            var parentescoApod = document.getElementById('parentescoApod');
+            var nombresApod = document.getElementById('nombresApod');
+            var primerApeApod = document.getElementById('primerApeApod');
+            var segundoApeApod = document.getElementById('segundoApeApod');
+            var departamento = document.getElementById('departamento');
             // FIN - VARIABLES DE DAT...
 
             // INI - VARIABLES DE DATOS CONTACTO
-            var envioCorreo = document.getElementById('envioCorreoContacto').value;
-            var correo = document.getElementById('correoContacto').value;
-            var telefono = document.getElementById('telefonoContacto').value;
-            var departamento = document.getElementById('departamento').value;
-            var provincia = document.getElementById('provincia').value;
-            var distrito = document.getElementById('distrito').value;
-            var direccion = document.getElementById('direccion').value;
-            var referencia = document.getElementById('referencia').value;
-            var motivo = document.getElementById('motivo').value;
+            var envioCorreo = document.getElementById('envioCorreoContacto');
+            var correo = document.getElementById('correoContacto');
+            var telefono = document.getElementById('telefonoContacto');
+            var provincia = document.getElementById('provincia');
+            var distrito = document.getElementById('distrito');
+            var direccion = document.getElementById('direccion');
+            var referencia = document.getElementById('referencia');
             // FIN - VARIABLES DE DAT...
 
             // INI - VARIABLES DE IDENTIFICACION DE LA QUEJA O RECLAMO
-            var reclamoCheck = document.getElementById('reclamo-checkbox').checked;
-            var quejaCheck = document.getElementById('queja-checkbox').checked;
-            var motivo = document.getElementById('motivo').value;
-            var subMotivo = document.getElementById('subMotivo').value;
-            var detalleReclamo = document.getElementById('detalleReclamo').value;
-            var pedidosReclamo = document.getElementById('pedidosReclamo').value;
+            var reclamoCheck = document.getElementById('reclamo-checkbox');
+            var quejaCheck = document.getElementById('queja-checkbox');
+            var tipoProducto = document.getElementById('tipoProducto');
+            var motivo = document.getElementById('motivo');
+            var subMotivo = document.getElementById('subMotivo');
+            var detalleReclamo = document.getElementById('detalleReclamo');
+            var pedidosReclamo = document.getElementById('pedidosReclamo');
             // FIN - VARIABLES DE IDENTI...
+
+            // INI - VARIABLES DE RESUMEN
+            var tipoDocR = document.getElementById('tipoDocR');
+            var nroDocR = document.getElementById('nroDocR');
+            var nomApeRazonSR = document.getElementById('nomApeRazonSR');
+            
+            var tipoDoc2HabR = document.getElementById('tipoDoc2HabR');
+            var nroDoc2HabR = document.getElementById('nroDoc2HabR');
+            var parentescoHabR = document.getElementById('parentescoHabR');
+            var nomApeRazonS2HabR = document.getElementById('nomApeRazonS2HabR');
+
+            var tipoDoc2R = document.getElementById('tipoDoc2R');
+            var nroDoc2R = document.getElementById('nroDoc2R');
+            var parentescoR = document.getElementById('parentescoR');
+            var nomApeRazonS2R = document.getElementById('nomApeRazonS2R');
+            
+            var envioCorreoR = document.getElementById('envioCorreoR');
+            var correoR = document.getElementById('correoR');
+            var telfR = document.getElementById('telfR');
+            var departamentoR = document.getElementById('departamentoR');
+            var provinciaR = document.getElementById('provinciaR');
+            var distritoR = document.getElementById('distritoR');
+            var direccionR = document.getElementById('direccionR');
+            var referenciaR = document.getElementById('referenciaR');
+            var tipoCasoR = document.getElementById('tipoCasoR');
+            var tipoProductoR = document.getElementById('tipoProductoR');
+            var motivoR = document.getElementById('motivoR');
+            var subMotivoR = document.getElementById('subMotivoR');
+            var detalleReclamoR = document.getElementById('detalleReclamoR');
+            var pedidosReclamoR = document.getElementById('pedidosReclamoR');
+            // FIN - VARIABLES DE R...
 
             if(contenidoPersonales.classList.contains('active')){
 
                 if(tipoDoc.value == "9"){ //RUC
-                    if(tipoDocRuc.trim() == "" || nroDocRuc.trim() == "" || razonSocialRuc.trim() == "" || tipoDocApod == "" || nroDocApod.trim() == "" || nombresApod.trim() == "" || primerApeApod.trim() == "" || segundoApeApod.trim() == ""){
+                    if(tipoDocRuc.value.trim() == "" || nroDocRuc.value.trim() == "" || razonSocialRuc.value.trim() == "" || tipoDocApod.value == "" || nroDocApod.value.trim() == "" || nombresApod.value.trim() == "" || primerApeApod.value.trim() == "" || segundoApeApod.value.trim() == ""){
                         return;
                     }
                 }else { // PROCESO NORMAL
-                    if(nroDocSoli.trim() == "" || nombresSoli.trim() == "" || primerApeSoli.trim() == "" || segundoApeSoli.trim() == ""){
+                    if(nroDocSoli.value.trim() == "" || nombresSoli.value.trim() == "" || primerApeSoli.value.trim() == "" || segundoApeSoli.value.trim() == ""){
                         return;
                     }
 
                     if(checkboxSi.checked){
-                        if(tipoDocApod == "" || nroDocApod.trim() == "" || parentescoApod.trim() == "" || nombresApod.trim() == "" || primerApeApod.trim() == "" || segundoApeApod.trim() == ""){
+                        if(tipoDocApod.value == "" || nroDocApod.value.trim() == "" || parentescoApod.value.trim() == "" || nombresApod.value.trim() == "" || primerApeApod.value.trim() == "" || segundoApeApod.value.trim() == ""){
                             return;
                         }
                     }
@@ -1197,7 +1304,7 @@
                 contenidoPersonales.classList.remove('show','active');
                 contenidoContacto.classList.add('show','active');
 
-                if(departamento.trim() == ''){
+                if(departamento.value.trim() == ''){
                     await listarDepartamento();
                 }
 
@@ -1205,7 +1312,7 @@
 
             }else if(contenidoContacto.classList.contains('active')){
 
-                if(envioCorreo == "" || correo.trim() == "" || telefono.trim() == "" || departamento == "" || provincia == "" || distrito == "" || direccion.trim() == "" || envioCorreo == 2 && referencia.trim() == ""){
+                if(envioCorreo.value == "" || correo.value.trim() == "" || telefono.value.trim() == "" || departamento.value == "" || provincia.value == "" || distrito.value == "" || direccion.value.trim() == "" || envioCorreo.value == 2 && referencia.value.trim() == ""){
                     return;
                 }
 
@@ -1216,7 +1323,11 @@
                 contenidoContacto.classList.remove('show', 'active');
                 contenidoIdentificacion.classList.add('show', 'active');
 
-                if(motivo.trim() == ''){
+                if(!reclamoCheck.checked && !quejaCheck.checked){
+                    reclamoCheck.checked = true;
+                }
+
+                if(motivo.value.trim() == ''){
                     await listarMotivo();
                 }
 
@@ -1226,7 +1337,7 @@
 
                 
 
-                if(!reclamoCheck && !quejaCheck || motivo == "" || subMotivo == "" || detalleReclamo.trim() == "" || pedidosReclamo.trim() == ""){
+                if(!reclamoCheck.checked && !quejaCheck.checked || tipoProducto.value == "" || motivo.value == "" || subMotivo.value == "" || detalleReclamo.value.trim() == "" || pedidosReclamo.value.trim() == ""){
                     return;
                 }
                 document.getElementById('loader').style.display = '';
@@ -1236,11 +1347,49 @@
                 contenidoIdentificacion.classList.remove('show', 'active');
                 contenidoResumen.classList.add('show', 'active');
 
-                if(tipoDoc.value == "9"){ // RUC
-                    // CONTINUAR LOGICA 
-                }else { // PROCESO NORMAL
+                if(tipoDoc.value == "9"){
+                    tipoDoc2HabR.style.display = '';
+                    nroDoc2HabR.style.display = '';
+                    parentescoHabR.style.display = 'none';
+                    nomApeRazonS2HabR.style.display = '';
+                }else{
 
+                    if(checkboxSi.checked){
+                        tipoDoc2HabR.style.display = '';
+                        nroDoc2HabR.style.display = '';
+                        parentescoHabR.style.display = '';
+                        nomApeRazonS2HabR.style.display = '';
+                    }else {
+                        tipoDoc2HabR.style.display = 'none';
+                        nroDoc2HabR.style.display = 'none';
+                        parentescoHabR.style.display = 'none';
+                        nomApeRazonS2HabR.style.display = 'none';
+                    }
                 }
+                
+                tipoDocR.value = tipoDoc.value == "9"? tipoDocRuc.value: tipoDocSoli.value;
+                nroDocR.value = tipoDoc.value == "9"? nroDocRuc.value : nroDocSoli.value;
+                nomApeRazonSR.value = tipoDoc.value == "9"? razonSocialRuc.value : nombresSoli.value + ' ' + primerApeSoli.value + ' ' + segundoApeSoli.value;
+                
+                tipoDoc2R.value = tipoDocApod.options[tipoDocApod.selectedIndex].text;   //checkboxSi.checked? tipoDocApod.value : '';
+                nroDoc2R.value = nroDocApod.value;  //checkboxSi.checked? nroDocApod.value : '';
+                parentescoR.value = parentescoApod.value; //checkboxSi.checked? parentescoApod.value : '';
+                nomApeRazonS2R.value = nombresApod.value + ' ' + primerApeApod.value + ' ' + segundoApeApod.value;
+
+                envioCorreoR.value = envioCorreo.value == 1? 'Correo electrónico' : 'Dirección de domicilio';
+                correoR.value = correo.value;
+                telfR.value = telefono.value;
+                departamentoR.value = departamento.options[departamento.selectedIndex].text;
+                provinciaR.value = provincia.options[provincia.selectedIndex].text;
+                distritoR.value = distrito.options[distrito.selectedIndex].text;
+                direccionR.value = direccion.value;
+                referenciaR.value = referencia.value;
+                tipoCasoR.value = reclamoCheck.checked && !quejaCheck? 'Reclamo' : 'Queja';
+                tipoProductoR.value = tipoProducto.options[tipoProducto.selectedIndex].text;
+                motivoR.value = motivo.options[motivo.selectedIndex].text;
+                subMotivoR.value = subMotivo.options[subMotivo.selectedIndex].text;
+                detalleReclamoR.value = detalleReclamo.value;
+                pedidosReclamoR.value = pedidosReclamo.value;
 
                 btnSiguiente.innerHTML = "Enviar";
 
@@ -1322,12 +1471,14 @@
             const referencia = document.getElementById('referencia');
             const refValid = document.getElementById('refValid');
 
-            if(envioCorreo == 1){
+            if(envioCorreo == 1){ // Correo
                 referencia.placeholder = "Opcional";
                 refValid.style.display = "none";
-            }else {
+                referencia.removeAttribute('required');
+            }else { // Dirección de domicilio
                 referencia.placeholder = "Datos obligatorios";
                 refValid.style.display = "";
+                referencia.setAttribute('required','required');
             }
         });
 
