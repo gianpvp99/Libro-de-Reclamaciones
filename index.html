@@ -968,7 +968,8 @@
         const enviroment_url = "https://pisac.mafperu.com.pe/wa_experiencia_midleware/api";
         // const enviroment_url = "https://mafperu.com.pe/wa_experiencia_crm_vs2/api";
         //const enviroment_url = "https://localhost:44324/api";
-        const reclamo_url = "https://api-col-prod.crossnet.la/WebApiMafperu/api";
+        // const reclamo_url = "https://api-col-prod.crossnet.la/WebApiMafperu/api";
+        const reclamo_url = "https://localhost:44324/api";
         const CONTACTO = {
             listar_tipo_documento: '/contacto/listartipodocumento',
             cliente_documento: '/contacto/clienteDocumento',
@@ -979,11 +980,14 @@
             registro_form: '/contacto/registroForm'
         }
         const RECLAMO = {
+            listar_tipo_documento: '/reclamo/listartipodocumento',
             listar_departamento: '/reclamo/listardepartamento',
             listar_provincia: '/reclamo/listarprovincia',
             listar_distrito: '/reclamo/listardistrito',
             listar_motivo: '/reclamo/listarmotivo',
             listar_submotivo: '/reclamo/listarsubmotivo',
+            registro_form: '/reclamo/enviarreclamo2',
+            adjunto: '/reclamo/enviararchivo'
         }
         
     </script>
@@ -1006,7 +1010,7 @@
 
         async function cargarTiposDocumento() {
             try {
-                const response = await fetch(`${enviroment_url}${CONTACTO.listar_tipo_documento}`);
+                const response = await fetch(`${reclamo_url}${RECLAMO.listar_tipo_documento}`);
                 const data = await response.json();
 
                 const select = document.getElementById('tipoDoc');
@@ -1406,8 +1410,7 @@
 
         async function listarDepartamento(){
             try{
-                const documento = document.getElementById('nroDocSoli').value;
-                const response = await fetch(`${reclamo_url}${RECLAMO.listar_departamento}?nroDocumento=${documento}`);
+                const response = await fetch(`${reclamo_url}${RECLAMO.listar_departamento}`);
                 const data = await response.json();
 
                 const departamento = document.getElementById('departamento');
@@ -1582,7 +1585,93 @@
             document.getElementById('documentosAdjuntosR').textContent = accumulatedFiles.length + ' archivo(s)';
         }
 
+        async function enviarCaso(){
 
+            const tipoDocRuc = document.getElementById('tipoDocRuc');
+            const nroDocRuc = document.getElementById('nroDocRuc').value;
+            const razonSocialRuc = document.getElementById('razonSocialRuc').value;
+
+            const tEdad = document.getElementById('checkboxSi').checked && !document.getElementById('checkboxNo').checked? "Si" : "No"; 
+            const tipoDocSoli = document.getElementById('tipoDocSoli');
+            const nroDocSoli = document.getElementById('nroDocSoli').value;
+            const nombresSoli = document.getElementById('nombresSoli').value;
+            const primerApeSoli = document.getElementById('primerApeSoli').value;
+            const segundoApeSoli = document.getElementById('segundoApeSoli').value;
+            
+            const correoContacto = document.getElementById('correoContacto').value;
+            const envioCorreoContacto = document.getElementById('envioCorreoContacto').value;
+            const telefonoContacto = document.getElementById('telefonoContacto').value;
+            const departamento = document.getElementById('departamento').value;
+            const provincia = document.getElementById('provincia').value;
+            const distrito = document.getElementById('distrito').value;
+            const direccion = document.getElementById('direccion').value;
+            const tipoCaso = document.getElementById('reclamo-checkbox').checked && !document.getElementById('queja-checkbox').checked? "1": "9";
+            const tipoProducto = document.getElementById('tipoProducto').value;
+            const motivo = document.getElementById('motivo').value;
+            const subMotivo = document.getElementById('subMotivo').value;
+            const detalleReclamo = document.getElementById('detalleReclamo').value;
+            const data = 
+            {
+                "RepresentaEmpresa": 0,
+                "TipoDoc": tipoDoc.value == "9"? tipoDocRuc.value: tipoDocSoli.value,
+                "NroDoc": tipoDoc.value == "9"? nroDocRuc: nroDocSoli,
+                "Nombres": tipoDoc.value == "9"? razonSocialRuc: nombresSoli,
+                "ApellidoPaterno": tipoDoc.value == "9"? "": primerApeSoli,
+                "ApellidoMaterno": tipoDoc.value == "9"? "": segundoApeSoli,
+                "Email": correoContacto,
+                "Celular": telefonoContacto,
+                "uDepartamento": departamento,
+                "uProvincia": provincia,
+                "uDistrito": distrito,
+                "uDireccion": direccion,
+                "eRazonSocial": tipoDoc.value == "9"? razonSocialRuc: "",
+                "eTipoDoc": "",
+                "eNroDoc":"",
+                "TipoCaso": tipoCaso,
+                "TipoProducto": tipoProducto,
+                "Motivo": motivo,
+                "SubMotivo": subMotivo,
+                "DetalleCaso": detalleReclamo,
+                "TipoProductoLib": tipoProducto,
+                "EnvioNotificacion": envioCorreoContacto == "1"? "E": "C",
+                "Edad": tEdad,
+                "DesTipoDoc": tipoDoc.value == "9"? tipoDocRuc.options[tipoDocRuc.selectedIndex].text: tipoDocSoli.options[tipoDocSoli.selectedIndex].text,
+                "Empresa":"No",
+                "DesTipoDoc2":"DNI",
+                "NroDoc2":"10088949",
+                "Parentesco":"Madre",
+                "Nombres2":"maria hisela",
+                "ApellidoPaterno2":"puente",
+                "ApellidoMaterno2":"cajo",
+                "DesDepartamento":"Lima",
+                "DesProvincia":"Lima",
+                "DesDistrito":"Magdalena Del Mar",
+                "Referencia":"iglesia",
+                "DesCarta":"Dirección de domicilio",
+                "Caso":"QUEJA",
+                "DesTipoProd":"Otros",
+                "NroOper":"",
+                "Monto":"",
+                "DesMotivo":"Problemas por reprogramación COVID-19",
+                "DesSubMotivo":"Plazo difiere de lo pactado",
+                "DesPedido":"esto es una prueba 2",
+                "TieneAdjunto":"Si"
+            };
+
+            console.log(data)
+
+            // try{
+            //     const response = await fetch(`${reclamo_url}${RECLAMO.registro_form}`, {
+            //         method: 'POST',
+            //         headers: {'Content-Type': 'application/json'},
+            //         body: JSON.stringify(data)
+            //     });
+
+            //     const responseData = await response.json();
+            // }catch(error){
+
+            // }
+        }
     </script>
 </body>
 </html>
