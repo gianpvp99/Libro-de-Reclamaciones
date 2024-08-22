@@ -369,6 +369,20 @@
             padding: 20px;
         }
 
+         /* Cambiar el color del icono de éxito */
+         .swal2-icon.swal2-success .swal2-success-ring {
+            border-color: red; /* Cambia el color del borde del círculo */
+        }
+
+        .swal2-icon.swal2-success [class^=swal2-success-line] {
+            background-color: red; /* Cambia el color del fondo del tick */
+        }
+
+        .swal2-show
+        {
+            border: 2px solid black;
+        }
+
     </style>
 </head>
 <body>
@@ -393,9 +407,9 @@
             <div class="col-md-8">
                 <div class="form-section2">
                     <h5>¿Qué es un reclamo?</h5>
-                    <p>Insatisfacción en una operación, producto, servicio o por el incumplimiento de obligaciones contempladas en contratos marco normativo vigente o alguna presunta afectación a tu legítimo interés.</p>
+                    <p>Disconformidad relacionada a los productos o servicios brindados.</p>
                     <h5>¿Qué es un una queja?</h5>
-                    <p>Insatisfacción en una operación, producto, servicio o por el incumplimiento de obligaciones contempladas en contratos marco normativo vigente o alguna presunta afectación a tu legítimo interés.</p>
+                    <p>Malestar o descontento respecto a la atención al público.</p>
                     <h5>Plazo de atención</h5>
                     <p>Quince (15) días hábiles. El Plazo podrá extenderse previa comunicación explicando las razones así como el nuevo plazo estimado de respuesta.</p>
                     <h5>Documentos probatorios</h5>
@@ -632,7 +646,6 @@
                                         <label for="envioCorreoContacto" class="form-label">Medio elegido para envío de respuesta*
                                         </label>
                                         <select class="form-select" id="envioCorreoContacto" change required>
-                                            <option value="" disabled selected>Seleccionar</option>
                                             <option value="1" name="correo">Correo electrónico</option>
                                             <option value="2" name="direccion">Dirección de domicilio</option>
                                         </select>
@@ -804,138 +817,138 @@
                         </div>
                     </div>
                     <div class="tab-pane fade" id="pills-resumen" role="tabpanel" aria-labelledby="pills-resumen-tab">
-                       <div class="row col-md-8 offset-md-3">
+                       <div class="row">
                             <div class="mb-3 row">
                                 <label for="tipoDocR" class="col-sm-4 col-form-label">Tipo de documento*</label>
-                                <div class="col-sm-8">
+                                <div class="col-sm-5">
                                 <input type="text" class="form-control" id="tipoDocR" disabled>
                                 </div>
                             </div>
                             <div class="mb-3 row">
                                 <label for="nroDocR" class="col-sm-4 col-form-label">Número de documento*</label>
-                                <div class="col-sm-8">
+                                <div class="col-sm-5">
                                 <input type="text" class="form-control" id="nroDocR" disabled>
                                 </div>
                             </div>
                             <div class="mb-3 row">
                                 <label for="nomApeRazonSR" class="col-sm-4 col-form-label">Nombres y apellidos / Razón Social*</label>
-                                <div class="col-sm-8">
+                                <div class="col-sm-5">
                                 <input type="text" class="form-control" id="nomApeRazonSR" disabled>
                                 </div>
                             </div>
                             
                             <div class="mb-3 row" id="tipoDoc2HabR">
                                 <label for="tipoDoc2R" class="col-sm-4 col-form-label">Tipo de documento*</label>
-                                <div class="col-sm-8">
+                                <div class="col-sm-5">
                                 <input type="text" class="form-control" id="tipoDoc2R" disabled>
                                 </div>
                             </div>
                             <div class="mb-3 row" id="nroDoc2HabR">
                                 <label for="nroDoc2R" class="col-sm-4 col-form-label">Número de documento*</label>
-                                <div class="col-sm-8">
+                                <div class="col-sm-5">
                                 <input type="text" class="form-control" id="nroDoc2R" disabled>
                                 </div>
                             </div>
                             <div class="mb-3 row" id="parentescoHabR">
                                 <label for="parentescoR" class="col-sm-4 col-form-label">Parentesco*</label>
-                                <div class="col-sm-8">
+                                <div class="col-sm-5">
                                 <input type="text" class="form-control" id="parentescoR" disabled>
                                 </div>
                             </div>
                             <div class="mb-3 row" id="nomApeRazonS2HabR">
                                 <label for="nomApeRazonS2R" class="col-sm-4 col-form-label">Nombres y apellidos / Razón Social*</label>
-                                <div class="col-sm-8">
+                                <div class="col-sm-5">
                                 <input type="text" class="form-control" id="nomApeRazonS2R" disabled>
                                 </div>
                             </div>
                             
                             <div class="mb-3 row">
                                 <label for="envioCorreoR" class="col-sm-4 col-form-label">Medio elegido para envío de respuesta*</label>
-                                <div class="col-sm-8">
+                                <div class="col-sm-5">
                                 <input type="text" class="form-control" id="envioCorreoR" disabled>
                                 </div>
                             </div>
                             <div class="mb-3 row">
                                 <label for="correoR" class="col-sm-4 col-form-label">Email*</label>
-                                <div class="col-sm-8">
+                                <div class="col-sm-5">
                                 <input type="text" class="form-control" id="correoR" disabled>
                                 </div>
                             </div>
                             <div class="mb-3 row">
                                 <label for="telfR" class="col-sm-4 col-form-label">Telefono o Celular*</label>
-                                <div class="col-sm-8">
+                                <div class="col-sm-5">
                                 <input type="text" class="form-control" id="telfR" disabled>
                                 </div>
                             </div>
                             <div class="mb-3 row">
                                 <label for="departamentoR" class="col-sm-4 col-form-label">Departamento*</label>
-                                <div class="col-sm-8">
+                                <div class="col-sm-5">
                                 <input type="text" class="form-control" id="departamentoR" disabled>
                                 </div>
                             </div>
                             <div class="mb-3 row">
                                 <label for="provinciaR" class="col-sm-4 col-form-label">Provincia*</label>
-                                <div class="col-sm-8">
+                                <div class="col-sm-5">
                                 <input type="text" class="form-control" id="provinciaR" disabled>
                                 </div>
                             </div>
                             <div class="mb-3 row">
                                 <label for="distritoR" class="col-sm-4 col-form-label">Distrito*</label>
-                                <div class="col-sm-8">
+                                <div class="col-sm-5">
                                 <input type="text" class="form-control" id="distritoR" disabled>
                                 </div>
                             </div>
                             <div class="mb-3 row">
                                 <label for="direccionR" class="col-sm-4 col-form-label">Dirección actual*</label>
-                                <div class="col-sm-8">
+                                <div class="col-sm-5">
                                 <input type="text" class="form-control" id="direccionR" disabled>
                                 </div>
                             </div>
                             <div class="mb-3 row">
                                 <label for="referenciaR" class="col-sm-4 col-form-label">Referencia*</label>
-                                <div class="col-sm-8">
+                                <div class="col-sm-5">
                                 <input type="text" class="form-control" id="referenciaR" disabled>
                                 </div>
                             </div>
                             <div class="mb-3 row">
                                 <label for="tipoCasoR" class="col-sm-4 col-form-label">Tipo de caso*</label>
-                                <div class="col-sm-8">
+                                <div class="col-sm-5">
                                 <input type="text" class="form-control" id="tipoCasoR" disabled>
                                 </div>
                             </div>
                             <div class="mb-3 row">
                                 <label for="tipoProductoR" class="col-sm-4 col-form-label">Tipo de producto*</label>
-                                <div class="col-sm-8">
+                                <div class="col-sm-5">
                                 <input type="text" class="form-control" id="tipoProductoR" disabled>
                                 </div>
                             </div>
                             <div class="mb-3 row">
                                 <label for="motivoR" class="col-sm-4 col-form-label">Motivo*</label>
-                                <div class="col-sm-8">
+                                <div class="col-sm-5">
                                 <input type="text" class="form-control" id="motivoR" disabled>
                                 </div>
                             </div>
                             <div class="mb-3 row">
                                 <label for="subMotivoR" class="col-sm-4 col-form-label">Sub motivo*</label>
-                                <div class="col-sm-8">
+                                <div class="col-sm-5">
                                 <input type="text" class="form-control" id="subMotivoR" disabled>
                                 </div>
                             </div>
                             <div class="mb-3 row">
                                 <label for="detalleReclamoR" class="col-sm-4 col-form-label">Detalle del reclamo o queja*</label>
-                                <div class="col-sm-8">
+                                <div class="col-sm-5">
                                     <textarea style="height: 15vh" class="form-control" name="detalleReclamoR" id="detalleReclamoR" placeholder="Datos obligatorios" disabled> </textarea>
                                 </div>
                             </div>
                             <div class="mb-3 row">
                                 <label for="pedidosReclamoR" class="col-sm-4 col-form-label">Pedido del reclamante*</label>
-                                <div class="col-sm-8">
+                                <div class="col-sm-5">
                                     <textarea style="height: 15vh" class="form-control" name="pedidosReclamoR" id="pedidosReclamoR" placeholder="Datos obligatorios" disabled> </textarea>
                                 </div>
                             </div>
                             <div class="mb-3 row">
                                 <label for="documentosAdjuntosR" class="col-sm-4 col-form-label">Documentos sustentarios</label>
-                                <div class="col-sm-8">
+                                <div class="col-sm-5">
                                     <span id="documentosAdjuntosR" style="margin-left: 7px"></span>
                                 </div>
                             </div>
@@ -991,8 +1004,9 @@
         }
         
     </script>
-     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
      
     <script>
        
@@ -1402,7 +1416,7 @@
             }else if(contenidoResumen.classList.contains('active')){
                 document.getElementById('loader').style.display = '';
 
-
+                await enviarCaso();
                 document.getElementById('loader').style.display = 'none';
             }
 
@@ -1598,80 +1612,156 @@
             const primerApeSoli = document.getElementById('primerApeSoli').value;
             const segundoApeSoli = document.getElementById('segundoApeSoli').value;
             
+            const tipoDocApod = document.getElementById('tipoDocApod');
+            const DesTipoDoc2 = String(tipoDocApod.options[tipoDocApod.selectedIndex].innerHTML);
+            const nroDocApod = document.getElementById('nroDocApod').value;
+            const parentescoApod = document.getElementById('parentescoApod').value;
+            const nombresApod = document.getElementById('nombresApod').value;
+            const primerApeApod = document.getElementById('primerApeApod').value;
+            const segundoApeApod = document.getElementById('segundoApeApod').value;
+            
             const correoContacto = document.getElementById('correoContacto').value;
-            const envioCorreoContacto = document.getElementById('envioCorreoContacto').value;
+            const envioCorreoContacto = document.getElementById('envioCorreoContacto');
+            const DesCarta = String(envioCorreoContacto.options[envioCorreoContacto.selectedIndex].innerHTML);
             const telefonoContacto = document.getElementById('telefonoContacto').value;
-            const departamento = document.getElementById('departamento').value;
-            const provincia = document.getElementById('provincia').value;
-            const distrito = document.getElementById('distrito').value;
+            const departamento = document.getElementById('departamento');
+            const DesDepartamento = String(departamento.options[departamento.selectedIndex].innerHTML);
+            const provincia = document.getElementById('provincia');
+            const DesProvincia = String(provincia.options[provincia.selectedIndex].innerHTML);
+            const distrito = document.getElementById('distrito');
+            const DesDistrito = String(distrito.options[distrito.selectedIndex].innerHTML);
             const direccion = document.getElementById('direccion').value;
+            const referencia = document.getElementById('referencia').value;
             const tipoCaso = document.getElementById('reclamo-checkbox').checked && !document.getElementById('queja-checkbox').checked? "1": "9";
-            const tipoProducto = document.getElementById('tipoProducto').value;
-            const motivo = document.getElementById('motivo').value;
-            const subMotivo = document.getElementById('subMotivo').value;
+            const tipoProducto = document.getElementById('tipoProducto');
+            const DesTipoProd = String(tipoProducto.options[tipoProducto.selectedIndex].innerHTML);
+            const motivo = document.getElementById('motivo');
+            const DesMotivo = String(motivo.options[motivo.selectedIndex].innerHTML);
+            const subMotivo = document.getElementById('subMotivo');
+            const DesSubMotivo = String(subMotivo.options[subMotivo.selectedIndex].innerHTML);
             const detalleReclamo = document.getElementById('detalleReclamo').value;
+            const pedidosReclamo = document.getElementById('pedidosReclamo').value;
+            const documentFiles = document.getElementById('DocumentFiles');
+
             const data = 
             {
                 "RepresentaEmpresa": 0,
-                "TipoDoc": tipoDoc.value == "9"? tipoDocRuc.value: tipoDocSoli.value,
+                "TipoDoc": tipoDoc.value,
                 "NroDoc": tipoDoc.value == "9"? nroDocRuc: nroDocSoli,
                 "Nombres": tipoDoc.value == "9"? razonSocialRuc: nombresSoli,
                 "ApellidoPaterno": tipoDoc.value == "9"? "": primerApeSoli,
                 "ApellidoMaterno": tipoDoc.value == "9"? "": segundoApeSoli,
                 "Email": correoContacto,
                 "Celular": telefonoContacto,
-                "uDepartamento": departamento,
-                "uProvincia": provincia,
-                "uDistrito": distrito,
+                "uDepartamento": departamento.value,
+                "uProvincia": provincia.value,
+                "uDistrito": distrito.value,
                 "uDireccion": direccion,
                 "eRazonSocial": tipoDoc.value == "9"? razonSocialRuc: "",
                 "eTipoDoc": "",
                 "eNroDoc":"",
                 "TipoCaso": tipoCaso,
-                "TipoProducto": tipoProducto,
-                "Motivo": motivo,
-                "SubMotivo": subMotivo,
+                "TipoProducto": tipoProducto.value,
+                "Motivo": motivo.value,
+                "SubMotivo": subMotivo.value,
                 "DetalleCaso": detalleReclamo,
-                "TipoProductoLib": tipoProducto,
-                "EnvioNotificacion": envioCorreoContacto == "1"? "E": "C",
+                "TipoProductoLib": tipoProducto.value,
+                "EnvioNotificacion": envioCorreoContacto.value == "1"? "E": "C",
                 "Edad": tEdad,
-                "DesTipoDoc": tipoDoc.value == "9"? tipoDocRuc.options[tipoDocRuc.selectedIndex].text: tipoDocSoli.options[tipoDocSoli.selectedIndex].text,
-                "Empresa":"No",
-                "DesTipoDoc2":"DNI",
-                "NroDoc2":"10088949",
-                "Parentesco":"Madre",
-                "Nombres2":"maria hisela",
-                "ApellidoPaterno2":"puente",
-                "ApellidoMaterno2":"cajo",
-                "DesDepartamento":"Lima",
-                "DesProvincia":"Lima",
-                "DesDistrito":"Magdalena Del Mar",
-                "Referencia":"iglesia",
-                "DesCarta":"Dirección de domicilio",
-                "Caso":"QUEJA",
-                "DesTipoProd":"Otros",
+                "DesTipoDoc": tipoDoc.value == "9"? tipoDocRuc.value: tipoDocSoli.value,
+                "Empresa": "No",
+                "DesTipoDoc2": DesTipoDoc2,
+                "NroDoc2": nroDocApod,
+                "Parentesco": parentescoApod,
+                "Nombres2": nombresApod,
+                "ApellidoPaterno2": primerApeApod,
+                "ApellidoMaterno2": segundoApeApod,
+                "DesDepartamento": DesDepartamento,
+                "DesProvincia": DesProvincia,
+                "DesDistrito": DesDistrito,
+                "Referencia": referencia,
+                "DesCarta": DesCarta,
+                "Caso": tipoCaso == "1"? "Reclamo": "Queja",
+                "DesTipoProd": DesTipoProd,
                 "NroOper":"",
                 "Monto":"",
-                "DesMotivo":"Problemas por reprogramación COVID-19",
-                "DesSubMotivo":"Plazo difiere de lo pactado",
-                "DesPedido":"esto es una prueba 2",
-                "TieneAdjunto":"Si"
+                "DesMotivo": DesMotivo,
+                "DesSubMotivo": DesSubMotivo,
+                "DesPedido": pedidosReclamo,
+                "TieneAdjunto": documentFiles.files.length > 0? "Si": "No"
             };
 
-            console.log(data)
+            try{
+                const response = await fetch(`${reclamo_url}${RECLAMO.registro_form}`, {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify(data)
+                });
 
-            // try{
-            //     const response = await fetch(`${reclamo_url}${RECLAMO.registro_form}`, {
-            //         method: 'POST',
-            //         headers: {'Content-Type': 'application/json'},
-            //         body: JSON.stringify(data)
-            //     });
+                const responseData = await response.json();
+                if(response.ok){
+                    await enviarAdjunto(responseData.guid);
 
-            //     const responseData = await response.json();
-            // }catch(error){
-
-            // }
+                    var primerNombre = data.Nombres.split(' ')[0]; // Extrae solo el primer nombre
+                    Swal.fire({
+                        title: "¡Información registrada!",
+                        html: `Hola <strong>${primerNombre}</strong>, hemos recibido su caso correctamente, 
+                                estaremos revisándolo para contactarnos con usted y brindarle una respuesta lo más antes posible.<br>
+                                El código y la constancia de creación del caso llegarán a tu correo electrónico registrado.<br>
+                                ¡Muchas gracias de parte de la familia <strong>MAF!</strong>`,
+                        icon: "success",
+                        showConfirmButton: true,
+                        confirmButtonColor: 'red', // Cambia el color de fondo del botón si lo deseas
+                        allowOutsideClick: false, // Evita que el modal se cierre haciendo clic fuera del modal
+                        confirmButtonText: 'Cerrar',}).then((result) => {
+                        if (result.value) {
+                            window.location.reload();
+                        }
+                    });
+                }else {
+                    throw new Error(responseData || 'Error desconocido');
+                }
+            }catch(error){
+                console.log(error);
+                Swal.fire({
+                    title: "Error al registrar el caso",
+                    html: `Lamentablemente ocurrió un error al procesar su solicitud. Por favor, intente de nuevo más tarde.<br><br>Detalle del error: ${error.message}`,
+                    icon: "error",
+                    confirmButtonColor: 'red',
+                    confirmButtonText: 'Cerrar'
+                });
+            }
         }
+        async function enviarAdjunto(casoId) {
+            const archivoInput = document.getElementById('DocumentFiles');
+            if (archivoInput.files.length === 0) {
+                console.log("No hay archivos para enviar.");
+                return;
+            }
+
+            const formData = new FormData();
+            Array.from(archivoInput.files).forEach(file => {
+                formData.append('file', file);
+                formData.append('filename', file.name);
+            });
+            formData.append('caseId', casoId);
+            formData.append('subject', 'Libro de Reclamaciones MAF PERÚ');
+
+            try {
+                const adjuntoResponse = await fetch(`${reclamo_url}${RECLAMO.adjunto}`, {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (!adjuntoResponse.ok) {
+                    throw new Error('Error al adjuntar archivo');
+                }
+                console.log('Adjunto enviado con éxito');
+            } catch (error) {
+                console.error('Error enviando adjunto:', error);
+            }
+        }
+
     </script>
 </body>
 </html>
