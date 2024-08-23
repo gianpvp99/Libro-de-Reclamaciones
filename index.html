@@ -30,7 +30,7 @@
         }
 
         .header {
-            background-color: red;
+            background-color: #EB0A1E;
             color: white;
             padding: 10px;
             text-align: center;
@@ -66,7 +66,7 @@
         }
 
         .form-section3 {
-            background-color: #f0f0f0;
+            /* background-color: #f0f0f0; */
             padding: 20px;
             border-radius: 5px;
         }
@@ -112,7 +112,7 @@
             padding: 0.9rem 2.5rem; /* Padding más simplificado */
             border-radius: 1.55rem; /* Borde redondeado, también en rem */
             font-size: 1.25rem; /* Tamaño de fuente más grande para mejor lectura en móviles */
-            background-color: red; /* Color de fondo */
+            background-color: #EB0A1E; /* Color de fondo */
             border: none; /* Sin borde */
             color: white; /* Texto blanco para mayor contraste */
             transition: background-color 0.3s; /* Efecto de transición suave al cambiar de estado */
@@ -142,7 +142,7 @@
             display: inline-block;
             width: 20px;
             height: 20px;
-            border: 2px solid red; /* Red border */
+            border: 2px solid #EB0A1E; /* Red border */
             position: absolute;
             left: 0;
             top: 0;
@@ -151,7 +151,7 @@
         }
 
         .custom-checkbox:checked + .form-check-label::before {
-            background-color: red; /* Red background when checked */
+            background-color: #EB0A1E; /* Red background when checked */
         }
 
         .custom-checkbox:checked + .form-check-label::after {
@@ -168,7 +168,7 @@
         }
 
         .btn_atras{
-            background-color: red;
+            background-color: #EB0A1E;
             color: white;
             border: none;
             padding-right: 30px;
@@ -188,7 +188,7 @@
         }
         .btn_siguiente
         {
-            background-color: red;
+            background-color: #EB0A1E;
             color: white;
             border: none;
             padding-right: 30px;
@@ -231,7 +231,7 @@
             background-color: #F0F0F0;
         }
         .nav-pills .nav-link.active {
-            background-color: red;
+            background-color: #EB0A1E;
             color: white;
             font-weight: bold;
         }
@@ -243,7 +243,7 @@
             transform: translateY(-50%);
             width: 20px;
             height: 2px;
-            background-color: red;
+            background-color: #EB0A1E;
             z-index: -1;
         }
         .nav-pills .nav-link:last-child::after {
@@ -296,9 +296,9 @@
         }
 
         .tipoCaso-checkbox input[type="checkbox"]:checked + .checkbox-icon {
-            background-color: red;
+            background-color: #EB0A1E;
             color: white;
-            border-color: red;
+            border-color: #EB0A1E;
         }
 
         .tipoCaso-checkbox input[type="checkbox"]:checked + .checkbox-icon svg {
@@ -306,7 +306,7 @@
         }
 
         .tipoCaso-checkbox input[type="checkbox"]:checked ~ .label-text {
-            color: red;
+            color: #EB0A1E;
         }
 
         .tipoCaso-checkbox .checkbox-icon svg {
@@ -336,7 +336,7 @@
 
         #file-list li::before {
             content: '•'; /* Usamos un pseudo-elemento para el marcador */
-            color: red; /* Puedes cambiar el color del marcador */
+            color: #EB0A1E; /* Puedes cambiar el color del marcador */
             margin-right: 10px; /* Espacio entre el marcador y el texto */
             flex-shrink: 0; /* Previene que el marcador se escale */
         }
@@ -364,18 +364,18 @@
             width: auto;
         }
 
-        .container-banner {
-            background-color: grey;
-            padding: 20px;
+        .container-banner1 {
+            background-color: #EB0A1E;
+            padding: 50px;
         }
 
          /* Cambiar el color del icono de éxito */
          .swal2-icon.swal2-success .swal2-success-ring {
-            border-color: red; /* Cambia el color del borde del círculo */
+            border-color: #EB0A1E; /* Cambia el color del borde del círculo */
         }
 
         .swal2-icon.swal2-success [class^=swal2-success-line] {
-            background-color: red; /* Cambia el color del fondo del tick */
+            background-color: #EB0A1E; /* Cambia el color del fondo del tick */
         }
 
         .swal2-show
@@ -404,17 +404,23 @@
                 </div>
             </div>
 
-            <div class="col-md-8">
-                <div class="form-section2">
-                    <h5>¿Qué es un reclamo?</h5>
-                    <p>Disconformidad relacionada a los productos o servicios brindados.</p>
-                    <h5>¿Qué es un una queja?</h5>
-                    <p>Malestar o descontento respecto a la atención al público.</p>
-                    <h5>Plazo de atención</h5>
-                    <p>Quince (15) días hábiles. El Plazo podrá extenderse previa comunicación explicando las razones así como el nuevo plazo estimado de respuesta.</p>
-                    <h5>Documentos probatorios</h5>
-                    <p>Si necesitas añadir documentación del sustento de tu reclamo, deberás cargarlos en el apartado “Documentos adjuntos”.</p>
+            <div class="col-md-8 row mb-3">
+                <div class="col-md-4 text-center">
+                    <img src="https://i.imgur.com/JVs2YBI.png"  class="img-fluid" style="width: 90%; height: auto;">
                 </div>
+                <div class="col-md-8">
+                    <div class="form-section2" style="text-align: justify;">
+                        <h5>¿Qué es un reclamo?</h5>
+                        <p>Disconformidad relacionada a los productos o servicios brindados.</p>
+                        <h5>¿Qué es un una queja?</h5>
+                        <p>Malestar o descontento respecto a la atención al público.</p>
+                        <h5>Plazo de atención</h5>
+                        <p>Quince (15) días hábiles. El Plazo podrá extenderse previa comunicación explicando las razones así como el nuevo plazo estimado de respuesta.</p>
+                        <h5>Documentos probatorios</h5>
+                        <p>Si necesitas añadir documentación del sustento de tu reclamo, deberás cargarlos en el apartado “Documentos adjuntos”.</p>
+                    </div>
+                </div>
+                
             </div>
             <div class="col-md-4">
                 <div class="form-section3">
@@ -429,9 +435,12 @@
                             <input type="text" class="form-control"id="nroDoc" aria-label="Ingresar número de documento">
                         </div>
                     </div>
-                    <div style="text-align: center;">
+                    <div style="text-align: center;" class="mb-4">
                         <button type="button" onclick="continuarProceso()" class="btn btnContinuarHome" id="btnContinuarHome" disabled>Continuar</button>
                     </div>
+                    <div class="row">
+                        <img src="img/banner1.png" id="changingImage" style="width: 350px; height: auto;">
+                   </div>
                 </div>
             </div>
         </div>
@@ -794,7 +803,7 @@
 
                                 <div class="col-md-6">
                                     <div class="mb-3">
-                                        <h5 style="color: red; font-weight: bold">Documentos Adjuntos</h5>
+                                        <h5 style="color: #EB0A1E; font-weight: bold">Documentos Adjuntos</h5>
                                         <p style="font-size: 0.8rem">
                                             Puedes adjuntar vouchers, estados de cuenta, imágenes u otros documentos para sustentar tu caso.
                                         </p>
@@ -803,7 +812,7 @@
                                 <div class="col-md-6">
                                     <div class="custom-file-container" style="position: relative;">
                                         <input type="file" id="DocumentFiles" name="DocumentFiles" multiple="" style="opacity: 0; position: absolute; left: 0; top: 0; width: 100%; height: 100%; cursor: pointer;"/>
-                                        <button type="button" id="customButton" style="width: 100%; border: none; border-radius: 5px; font-size: 1rem; padding-bottom: 10px; padding-top: 10px;font-weight: normal; background-color: red; color: white; font-weight: bold;">Adjuntar documentos <img src="https://i.imgur.com/fYK08ph.png" style="width: 1rem; float: right; margin-right: 1rem; margin-top: 0.2rem; filter: invert(100%);"></button>
+                                        <button type="button" id="customButton" style="width: 100%; border: none; border-radius: 5px; font-size: 1rem; padding-bottom: 10px; padding-top: 10px;font-weight: normal; background-color: #EB0A1E; color: white; font-weight: bold;">Adjuntar documentos <img src="https://i.imgur.com/fYK08ph.png" style="width: 1rem; float: right; margin-right: 1rem; margin-top: 0.2rem; filter: invert(100%);"></button>
                                     </div>
 
                                     <p style="font-size: 0.7rem; margin-top: 10px; text-align: justify">*Máximo 10 archivos de 30 MB cada uno.</br>*Los formatos permitidos son PNG, JPEG, GIF, DOCX, XLS, XLSX, PDF.</p>
@@ -982,7 +991,8 @@
         // const enviroment_url = "https://mafperu.com.pe/wa_experiencia_crm_vs2/api";
         //const enviroment_url = "https://localhost:44324/api";
         // const reclamo_url = "https://api-col-prod.crossnet.la/WebApiMafperu/api";
-        const reclamo_url = "https://localhost:44324/api";
+        // const reclamo_url = "https://pisac.mafperu.com.pe/wa_experiencia_midleware/api";
+        const reclamo_url = "https://apicrmmaf-ccgbcfd0hgatawax.eastus-01.azurewebsites.net/api";
         const CONTACTO = {
             listar_tipo_documento: '/contacto/listartipodocumento',
             cliente_documento: '/contacto/clienteDocumento',
@@ -1169,7 +1179,7 @@
 
             try{
                 const documento = document.getElementById('nroDoc').value;
-                const response = await fetch(`${enviroment_url}${CONTACTO.cliente_documento}?nroDocumento=${documento}`);
+                const response = await fetch(`${reclamo_url}${CONTACTO.cliente_documento}?nroDocumento=${documento}`);
                 const data = await response.json();
                 let nombreCompleto = '';
 
@@ -1761,6 +1771,38 @@
                 console.error('Error enviando adjunto:', error);
             }
         }
+
+        // Arreglo de URLs de las imágenes
+        const images = [
+            "https://mafperu.com/wp-content/uploads/2024/08/banner1.png",
+            "https://mafperu.com/wp-content/uploads/2024/08/banner2.png", // Añade aquí más URLs de imágenes
+            "https://mafperu.com/wp-content/uploads/2024/08/banner3.png"
+        ];
+
+        var currentIndex = 0;
+        const imageElement = document.getElementById("changingImage");
+
+        // Función para cambiar la imagen
+        function changeImage() {
+            currentIndex = (currentIndex + 1) % images.length;
+            imageElement.src = images[currentIndex];
+        }
+        if(currentIndex == 0){
+            // Cambia la imagen cada 3 segundos
+            console.log(currentIndex)
+
+            setInterval(changeImage, 3000);
+        }else if(currentIndex == 1){
+            console.log('entro')
+            console.log(currentIndex)
+
+            setInterval(changeImage, 6000);
+        }else if(currentIndex == 2){
+            console.log(currentIndex)
+
+            setInterval(changeImage, 7000);
+        }
+       
 
     </script>
 </body>
